@@ -1,7 +1,10 @@
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return <div className="App"></div>;
+import RecipeBuilder from './containers/RecipeBuilder/RecipeBuilder';
+class App extends Component {
+  render() {
+    return <RecipeBuilder />;
+  }
 }
 
 export default App;
