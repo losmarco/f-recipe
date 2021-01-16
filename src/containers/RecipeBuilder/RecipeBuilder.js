@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 
-import classes from './RecipeBuilder.module.scss';
+import classes from '../RecipeBuilder/RecipeBuilder.module.scss';
+
+import Select from './Select/Select';
 
 class RecipeBuilder extends Component {
   render() {
     return (
       <div className={classes.Layout}>
         <div className={classes.RecipeControlPanel}>
-          <h1>Recipe Control Panel</h1>
+          <div className={classes.ControlComponent}>
+            <Select label="Camera Model" />
+          </div>
         </div>
         <div className={classes.RecipeDisplay}>
-          <h1>Recipe(Drag and Drop)</h1>
+          <h1>Display Output</h1>
         </div>
       </div>
     );
