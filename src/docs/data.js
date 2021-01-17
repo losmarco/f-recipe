@@ -23,7 +23,8 @@ export const xtransII = [
   { value: 'xe2', label: 'X-E2' },
 ];
 
-export const cameraModelOptions = [
+//Camera Model with Sensor
+export const cameraModel = [
   {
     label: 'X-Trans IV',
     options: xtransIV,
@@ -36,4 +37,69 @@ export const cameraModelOptions = [
     label: 'X-Trans II',
     options: xtransII,
   },
+];
+
+export const filmSimulation = [
+  { value: 'provia', label: 'Provia' },
+  { value: 'velvia', label: 'Velvia' },
+  { value: 'astia', label: 'Astia' },
+  { value: 'classic-chrome', label: 'Classic Chrome' },
+  { value: 'pro-neg-hi', label: 'PRO Neg. Hi' },
+  { value: 'pro-neg-std', label: 'PRO Neg. Std' },
+  { value: 'classic-neg', label: 'Classic Negative' },
+  { value: 'eterna', label: 'ETERNA/Cinema' },
+  { value: 'eterna-bb', label: 'Eterna Bleach Bypass' },
+  { value: 'acros', label: 'Acros' },
+  { value: 'acros-ye', label: 'Acros+Ye' },
+  { value: 'acros-r', label: 'Acros+R' },
+  { value: 'acros-g', label: 'Acros+G' },
+  { value: 'sepia', label: 'Sepia' },
+  { value: 'monochrome', label: 'Monochrome' },
+  { value: 'monochrome-ye', label: 'Monochrome+Ye' },
+  { value: 'monochrome-r', label: 'Monochrome+R' },
+  { value: 'monochrome-g', label: 'Monochrome+G' },
+];
+
+//Grain Effect
+export const grainEffect = [
+  { value: 'off', label: 'Off' },
+  { value: 'weak', label: 'Weak' },
+  { value: 'strong', label: 'Strong' },
+];
+
+export const grainSize = [
+  { value: 'small', label: 'Small' },
+  { value: 'large', label: 'Large' },
+];
+
+export const grainEffectAndSize = [
+  {
+    label: 'Grain Effect',
+    options: grainEffect,
+  },
+  {
+    label: 'Grain Size',
+    options: grainSize,
+  },
+];
+
+//Dynmaic Range
+export const dynmaicRange = [
+  { value: 'auto', label: 'auto' },
+  { value: '100', label: '100' },
+  { value: '200', label: '200' },
+  { value: '400', label: '400' },
+];
+
+//Color Chrome
+export const colorChrome = [
+  { value: 'off', label: 'Off' },
+  { value: 'weak', label: 'Weak' },
+  { value: 'strong', label: 'Strong' },
+];
+
+export const colorChromeBlue = [
+  { value: 'off', label: 'Off' },
+  { value: 'weak', label: 'Weak' },
+  { value: 'strong', label: 'Strong' },
 ];
