@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classes from '../RecipeBuilder/RecipeBuilder.module.scss';
 
 import Select from './Select/Select';
-
+import Slider from './Slider/Slider';
 class RecipeBuilder extends Component {
   render() {
     return (
@@ -26,6 +26,24 @@ class RecipeBuilder extends Component {
           </div>
           <div className={classes.ControlComponent}>
             <Select label="Color Chrome Blue" options="colorChromeBlue" />
+          </div>
+          <div className={classes.ControlComponent}>
+            <Slider label="Noise Reduction" name="noiseReduction" />
+          </div>
+          <div className={classes.ControlComponent}>
+            <Slider label="Hightlight" name="highlight" />
+          </div>
+          <div className={classes.ControlComponent}>
+            <Slider label="Shadow" name="shadow" />
+          </div>
+          <div className={classes.ControlComponent}>
+            <Slider label="Color" name="color" />
+          </div>
+          <div className={classes.ControlComponent}>
+            <Slider label="Sharpness" name="sharpness" />
+          </div>
+          <div className={classes.ControlComponent}>
+            <Slider label="Clarity" name="clarity" />
           </div>
         </div>
         <div className={classes.RecipeDisplay}>

@@ -103,3 +103,40 @@ export const colorChromeBlue = [
   { value: 'weak', label: 'Weak' },
   { value: 'strong', label: 'Strong' },
 ];
+
+//Tone
+export const noiseReduction = {
+  min: -4,
+  max: 4,
+  marks: { '-4': '-4', '-2': '-2', 0: '0', 2: '2', 4: '4' },
+};
+
+export const highlight = {
+  min: -2,
+  max: 4,
+  marks: { '-2': '-2', 0: '0', 2: '2', 4: '4' },
+};
+
+export const shadow = {
+  min: -2,
+  max: 4,
+  marks: { '-2': '-2', 0: '0', 2: '2', 4: '4' },
+};
+
+export const color = {
+  min: -4,
+  max: 4,
+  marks: { '-4': '-4', '-2': '-2', 0: '0', 2: '2', 4: '4' },
+};
+
+export const sharpness = {
+  min: -4,
+  max: 4,
+  marks: { '-4': '-4', '-2': '-2', 0: '0', 2: '2', 4: '4' },
+};
+
+export const clarity = {
+  min: -5,
+  max: 5,
+  marks: { '-5': '-5', '-3': '-3', 0: '0', 3: '3', 5: '5' },
+};
