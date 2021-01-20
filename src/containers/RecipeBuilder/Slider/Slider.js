@@ -45,8 +45,8 @@ export default function SliderInput(props) {
         startPoint={0}
         marks={renderMinMaxData(props.name).marks}
         // value={/*Set current value of slider*/}
-        railStyle={{ backgroundColor: '#EAEFF1' }}
-        trackStyle={{ backgroundColor: '#81D4FA' }}
+        railStyle={{ backgroundColor: '#EDF2F7' }}
+        trackStyle={{ backgroundColor: '#6B7280' }}
         handleStyle={{
           borderColor: '#eee',
           backgroundColor: '#232F3E',

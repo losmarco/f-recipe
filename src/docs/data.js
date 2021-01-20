@@ -140,3 +140,9 @@ export const clarity = {
   max: 5,
   marks: { '-5': '-5', '-3': '-3', 0: '0', 3: '3', 5: '5' },
 };
+
+export const expoComp = {
+  min: -5,
+  max: 5,
+  marks: { '-5': '-5', '-3': '-3', 0: '0', 3: '3', 5: '5' },
+};

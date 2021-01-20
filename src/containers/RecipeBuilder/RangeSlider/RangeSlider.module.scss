@@ -1,5 +1,5 @@
-.Label {
-  margin-bottom: 0.3rem;
+.RangeSliderLabel {
+  margin-bottom: 0.3em;
 
   label {
     font-size: 1.3rem;
@@ -8,8 +8,6 @@
   }
 }
 
-.Select {
+.RangeSliderInput {
   width: 100%;
-  font-size: 1.4rem;
-  font-weight: 400;
 }

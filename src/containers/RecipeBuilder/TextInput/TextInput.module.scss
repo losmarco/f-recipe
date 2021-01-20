@@ -1,0 +1,32 @@
+.TextInputLabel {
+  margin-bottom: 0.3rem;
+
+  label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #cbd5e0;
+  }
+}
+
+.InputBox {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  min-height: 38px;
+  width: 100%;
+  background: #edf2f7;
+  border-radius: 4px 4px 0 0;
+
+  input {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    border-width: 1px;
+    font-size: 1.2rem;
+    color: #333333;
+    padding: 2px 8px;
+    caret-color: #333333;
+  }
+}

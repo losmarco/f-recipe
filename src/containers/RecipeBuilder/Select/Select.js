@@ -37,6 +37,7 @@ export default function SelectInput(props) {
         <label>{props.label}</label>
       </div>
       <Select
+        maxMenuHeight={220}
         className={classes.Select}
         defaultValue={selectedOption}
         onChange={setSelectedOption}
@@ -47,6 +48,7 @@ export default function SelectInput(props) {
             ...theme.colors,
             primary: '#404854',
             primary25: '#BABCC0',
+            neutral0: '#EDF2F7',
           },
         })}
       />

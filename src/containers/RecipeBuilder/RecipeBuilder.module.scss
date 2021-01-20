@@ -10,29 +10,15 @@
   }
 
   .RecipeControlPanel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-flow: center;
-
-    width: 400px;
-    background-color: #18202c;
-
-    @include respond(tab-port) {
-      width: 100%;
-      height: 35%;
-    }
-
-    .ControlComponent {
-      width: 80%;
-    }
+    display: block;
+    width: 500px;
+    background-color: #1a202c;
   }
 
   .RecipeDisplay {
     display: block;
     width: 100%;
-    background-color: #eaeff1;
+    background-color: #edf2f7;
 
     @include respond(tab-port) {
       height: 65%;
