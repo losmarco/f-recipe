@@ -12,7 +12,7 @@ import {
   clarity,
 } from '../../../docs/data';
 
-export default function SliderInput(props) {
+const SliderInput = (props) => {
   function renderMinMaxData() {
     switch (props.name) {
       case 'noiseReduction':
@@ -46,7 +46,7 @@ export default function SliderInput(props) {
         marks={renderMinMaxData(props.name).marks}
         // value={/*Set current value of slider*/}
         railStyle={{ backgroundColor: '#EDF2F7' }}
-        trackStyle={{ backgroundColor: '#6B7280' }}
+        trackStyle={[{ backgroundColor: '#6B7280' }]}
         handleStyle={{
           borderColor: '#eee',
           backgroundColor: '#232F3E',
@@ -54,7 +54,12 @@ export default function SliderInput(props) {
         dotStyle={{
           display: 'none',
         }}
+        activeDotStyle={{
+          border: 'red',
+        }}
       />
     </Fragment>
   );
-}
+};
+
+export default SliderInput;

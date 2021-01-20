@@ -52,7 +52,10 @@ const RecipeControl = () => {
         <TextInput label="ISO" placeholder="Auto, up to iso 6400" />
       </div>
       <div className={classes.RangeSliderComponent}>
-        <RangeSlider label="Exposure compensation" name="expoComp" />
+        <RangeSlider
+          label="Exposure compensation (1/3ev step)"
+          name="expoComp"
+        />
       </div>
     </div>
   );
