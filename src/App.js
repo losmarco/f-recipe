@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import RecipeBuilder from './containers/RecipeBuilder/RecipeBuilder';
+import Layout from './containers/Layout/Layout';
 
 class App extends Component {
   render() {
-    return <RecipeBuilder />;
+    return <Layout />;
   }
 }
 

@@ -51,11 +51,14 @@ const RecipeControl = () => {
       <div className={classes.ControlComponent}>
         <TextInput label="ISO" placeholder="Auto, up to iso 6400" />
       </div>
-      <div className={classes.RangeSliderComponent}>
+      <div className={classes.FullWidthComponent}>
         <RangeSlider
           label="Exposure compensation (1/3ev step)"
           name="expoComp"
         />
+      </div>
+      <div className={classes.FullWidthComponent}>
+        <TextInput label="Filter" placeholder=" " />
       </div>
     </div>
   );
