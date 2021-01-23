@@ -1,9 +1,7 @@
-import React from 'react';
-
 import classes from '../Layout/Layout.module.scss';
 
-import RecipeControl from './RecipeControl/RecipeControl';
-import ButtonGroup from './ButtonGroup/ButtonGroup';
+import RecipeControl from '../Layout/RecipeControl/RecipeControl';
+import ButtonGroup from '../Layout/RecipeControl/ButtonGroup/ButtonGroup';
 const Layout = () => {
   return (
     <div className={classes.Layout}>

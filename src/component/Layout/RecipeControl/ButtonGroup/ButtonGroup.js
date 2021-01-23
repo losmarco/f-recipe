@@ -1,8 +1,5 @@
-import React from 'react';
-
 import classes from '../ButtonGroup/ButtonGroup.module.scss';
-
-import Button from '../../../components/Button/Button';
+import Button from '../Button/Button';
 
 const ButtonGroup = () => {
   return (

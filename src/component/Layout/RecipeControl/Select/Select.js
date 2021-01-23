@@ -8,7 +8,7 @@ import {
   grainEffectAndSize,
   dynmaicRange,
   colorChrome,
-} from '../../../docs/data';
+} from '../../../../docs/data';
 
 const SelectInput = ({ label, options }) => {
   const [selectedOption, setSelectedOption] = useState(null);

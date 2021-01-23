@@ -10,7 +10,7 @@ import {
   color,
   sharpness,
   clarity,
-} from '../../../docs/data';
+} from '../../../../docs/data';
 
 const SliderInput = ({ label, name }) => {
   const [sliderPoint, setSliderPoint] = useState(0);

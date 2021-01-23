@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../RangeSlider/RangeSlider.module.scss';
-import { expoComp } from '../../../docs/data';
+import { expoComp } from '../../../../docs/data';
 const { Range } = Slider;
 
 const RangeSlider = ({ label }) => {

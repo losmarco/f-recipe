@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import classes from '../TextInput/TextInput.module.scss';
 
 const TextInput = ({ label, placeholder }) => {
