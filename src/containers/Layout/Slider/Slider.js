@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../Slider/Slider.module.scss';
@@ -12,9 +12,11 @@ import {
   clarity,
 } from '../../../docs/data';
 
-const SliderInput = (props) => {
-  function renderMinMaxData() {
-    switch (props.name) {
+const SliderInput = ({ label, name }) => {
+  const [sliderPoint, setSliderPoint] = useState(0);
+
+  const renderMinMaxData = (name) => {
+    switch (name) {
       case 'noiseReduction':
         return noiseReduction;
       case 'highlight':
@@ -30,21 +32,21 @@ const SliderInput = (props) => {
       default:
         return null;
     }
-  }
+  };
 
   return (
-    <Fragment>
+    <>
       <div className={classes.SliderLabel}>
-        <label>{props.label}</label>
+        <label>{label}</label>
       </div>
       <Slider
         className={classes.SliderInput}
-        min={renderMinMaxData(props.name).min}
-        max={renderMinMaxData(props.name).max}
-        defaultValue={0}
+        min={renderMinMaxData(name).min}
+        max={renderMinMaxData(name).max}
+        defaultValue={sliderPoint}
+        onChange={(value) => setSliderPoint(value)}
         startPoint={0}
-        marks={renderMinMaxData(props.name).marks}
-        // value={/*Set current value of slider*/}
+        marks={renderMinMaxData(name).marks}
         railStyle={{ backgroundColor: '#EDF2F7' }}
         trackStyle={[{ backgroundColor: '#6B7280' }]}
         handleStyle={{
@@ -58,7 +60,7 @@ const SliderInput = (props) => {
           border: 'red',
         }}
       />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 
 import classes from '../Select/Select.module.scss';
@@ -10,11 +10,11 @@ import {
   colorChrome,
 } from '../../../docs/data';
 
-export default function SelectInput(props) {
+const SelectInput = ({ label, options }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
-  function renderSelectData() {
-    switch (props.options) {
+  const renderSelectData = (options) => {
+    switch (options) {
       case 'cameraModel':
         return cameraModel;
       case 'filmSimulation':
@@ -30,18 +30,18 @@ export default function SelectInput(props) {
       default:
         return null;
     }
-  }
+  };
   return (
-    <Fragment>
+    <>
       <div className={classes.Label}>
-        <label>{props.label}</label>
+        <label>{label}</label>
       </div>
       <Select
         maxMenuHeight={220}
         className={classes.Select}
         defaultValue={selectedOption}
         onChange={setSelectedOption}
-        options={renderSelectData(props.options)}
+        options={renderSelectData(options)}
         theme={(theme) => ({
           ...theme,
           colors: {
@@ -52,6 +52,8 @@ export default function SelectInput(props) {
           },
         })}
       />
-    </Fragment>
+    </>
   );
-}
+};
+
+export default SelectInput;

@@ -1,21 +1,23 @@
-import React, { Fragment } from 'react';
+import { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../RangeSlider/RangeSlider.module.scss';
-
 import { expoComp } from '../../../docs/data';
 const { Range } = Slider;
-const RangeSlider = (props) => {
+
+const RangeSlider = ({ label }) => {
+  const [rangeValue, setRangeValue] = useState([0, 0]);
   return (
-    <Fragment>
+    <>
       <div className={classes.RangeSliderLabel}>
-        <label>{props.label}</label>
+        <label>{label}</label>
       </div>
       <Range
         className={classes.RangeSliderInput}
         min={expoComp.min}
         max={expoComp.max}
-        defaultValue={[0, 0]}
+        defaultValue={rangeValue}
+        onChange={(value) => setRangeValue(value)}
         marks={expoComp.marks}
         step={1 / 3}
         // value={/*Set current value of slider*/}
@@ -35,7 +37,7 @@ const RangeSlider = (props) => {
           display: 'none',
         }}
       />
-    </Fragment>
+    </>
   );
 };
 

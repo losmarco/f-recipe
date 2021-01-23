@@ -12,7 +12,7 @@ const Layout = () => {
         <ButtonGroup />
       </div>
       <div className={classes.RecipeDisplay}>
-        <h1>Display Output</h1>
+        <h1>{}</h1>
       </div>
     </div>
   );

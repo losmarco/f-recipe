@@ -1,21 +1,26 @@
-import React, { Fragment } from 'react';
+import { useState } from 'react';
+
 import classes from '../TextInput/TextInput.module.scss';
 
-const textInput = (props) => {
+const TextInput = ({ label, placeholder }) => {
+  const [textInput, setTextInput] = useState('');
   return (
-    <Fragment>
+    <>
       <div className={classes.TextInputLabel}>
-        <label>{props.label}</label>
+        <label>{label}</label>
       </div>
       <div>
         <div className={classes.InputBox}>
-          <input type="text" placeholder={props.placeholder} />
+          <input
+            type="text"
+            placeholder={placeholder}
+            value={textInput}
+            onChange={(e) => setTextInput(e.target.value)}
+          />
         </div>
       </div>
-
-      {/* value={} onChange={} */}
-    </Fragment>
+    </>
   );
 };
 
-export default textInput;
+export default TextInput;
