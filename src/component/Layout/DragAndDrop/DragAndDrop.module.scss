@@ -1,0 +1,16 @@
+.DropZone {
+  width: 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  border-radius: 4px;
+  border: 4px dashed #9c9c9c;
+  color: #bdbdbd;
+  transition: all 250ms ease-in-out;
+}
+.DropZone .uploadIcon {
+  width: 10rem;
+}

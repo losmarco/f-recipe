@@ -19,7 +19,9 @@
   }
 
   .RecipeDisplay {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background-color: #edf2f7;
 

@@ -2,6 +2,7 @@ import classes from '../Layout/Layout.module.scss';
 
 import RecipeControl from '../Layout/RecipeControl/RecipeControl';
 import ButtonGroup from '../Layout/RecipeControl/ButtonGroup/ButtonGroup';
+import DragAndDrop from '../Layout/DragAndDrop/DragAndDrop';
 const Layout = () => {
   return (
     <div className={classes.Layout}>
@@ -10,7 +11,7 @@ const Layout = () => {
         <ButtonGroup />
       </div>
       <div className={classes.RecipeDisplay}>
-        <h1>{}</h1>
+        <DragAndDrop />
       </div>
     </div>
   );
