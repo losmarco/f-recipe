@@ -15,7 +15,7 @@ const reject = {
 
 const DragAndDrop = () => {
   const [image, setImage] = useState([]);
-
+  const [display, setDisplay] = useState(true);
   const {
     getRootProps,
     getInputProps,
@@ -23,6 +23,7 @@ const DragAndDrop = () => {
     isDragReject,
   } = useDropzone({
     accept: 'image/jpeg, image/png',
+    // onDrop set state and mount the canvas component
     onDrop: (acceptedFiles) => {
       setImage(
         acceptedFiles.map((file) =>
@@ -36,6 +37,8 @@ const DragAndDrop = () => {
 
   useEffect(
     () => () => {
+      console.log('unmount {dragAndDrop} and mount {ImageCanvas}');
+      setDisplay(false);
       // Make sure to revoke the data uris to avoid memory leaks
       image.forEach((file) => URL.revokeObjectURL(file.preview));
     },
@@ -50,21 +53,27 @@ const DragAndDrop = () => {
     }),
     [isDragReject, isDragAccept]
   );
+
+  //Image Component for editing
   const imageCanvas = image.map((i) => (
     <div key={i.name}>
       <img src={i.preview} alt={i.name} />
     </div>
   ));
 
+  const dragAndDrop = (
+    <div className={classes.DropZone} {...getRootProps({ style })}>
+      <input type="file" {...getInputProps()} />
+      <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
+      <h1>Image with Recipe</h1>
+      <h2>(Drag n Drop here)</h2>
+    </div>
+  );
+
   return (
     <>
-      <div className={classes.DropZone} {...getRootProps({ style })}>
-        <input type="file" {...getInputProps()} />
-        <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
-        <h1>Image with Recipe</h1>
-        <h2>(Drag n Drop here)</h2>
-      </div>
-      {imageCanvas}
+      {/* if droped, unmount the dragAndDrop then mount imageCanvas */}
+      {display ? dragAndDrop : imageCanvas}
     </>
   );
 };
