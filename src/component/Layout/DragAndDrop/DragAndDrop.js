@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import uploadIcon from '../../../assets/icons/upload.svg';
 import classes from '../DragAndDrop/DragAndDrop.module.scss';
+import Canvas from './Canvas/Canvas';
 
 const accept = {
   pointer: 'cursor',
@@ -37,11 +38,11 @@ const DragAndDrop = () => {
 
   useEffect(
     () => () => {
-      console.log('unmount {dragAndDrop} and mount {ImageCanvas}');
       setDisplay(false);
       // Make sure to revoke the data uris to avoid memory leaks
       image.forEach((file) => URL.revokeObjectURL(file.preview));
     },
+
     [image]
   );
 
@@ -55,11 +56,19 @@ const DragAndDrop = () => {
   );
 
   //Image Component for editing
-  const imageCanvas = image.map((i) => (
-    <div key={i.name}>
-      <img src={i.preview} alt={i.name} />
-    </div>
-  ));
+
+  // const imageCanvas = (
+  //   <canvas width={500} height={500} ref={canvasRef}>
+  //     {/* {image.map((i) => (
+  //       <div key={i.name}>
+  //         <img src={i.preview} alt={i.name} />
+  //       </div>
+  //     ))} */}
+  //   </canvas>
+  // );
+  // const imageData = image.map((i) => {
+  //   return i.preview;
+  // });
 
   const dragAndDrop = (
     <div className={classes.DropZone} {...getRootProps({ style })}>
@@ -73,7 +82,7 @@ const DragAndDrop = () => {
   return (
     <>
       {/* if droped, unmount the dragAndDrop then mount imageCanvas */}
-      {display ? dragAndDrop : imageCanvas}
+      {display ? dragAndDrop : <Canvas photo={image} />}
     </>
   );
 };
