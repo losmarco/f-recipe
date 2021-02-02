@@ -24,8 +24,9 @@ const DragAndDrop = () => {
     isDragReject,
   } = useDropzone({
     accept: 'image/jpeg, image/png',
+    multiple: false,
     // onDrop set state and mount the canvas component
-    onDrop: (acceptedFiles) => {
+    onDropAccepted: (acceptedFiles) => {
       setImage(
         acceptedFiles.map((file) =>
           Object.assign(file, {

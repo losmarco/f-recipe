@@ -2,14 +2,9 @@ import { useEffect, useRef } from 'react';
 
 const Canvas = ({ photo }) => {
   const canvasRef = useRef(null);
-  // const imgRef = useRef(null);
-  // const source = image.map((i) => i.preview);
 
   useEffect(() => {
     const ctx = canvasRef.current.getContext('2d');
-    // const image = new Image();
-    // image.src = source;
-    // image.onload = () =>
     const image = new Image();
     image.src = photo[0].preview;
     console.log(photo[0].preview);
