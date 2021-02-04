@@ -14,9 +14,10 @@ const reject = {
   border: '4px dashed #d63031',
 };
 
-const DragAndDrop = () => {
+const DragAndDrop = ({ divSize }) => {
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
+
   const {
     getRootProps,
     getInputProps,
@@ -56,21 +57,6 @@ const DragAndDrop = () => {
     [isDragReject, isDragAccept]
   );
 
-  //Image Component for editing
-
-  // const imageCanvas = (
-  //   <canvas width={500} height={500} ref={canvasRef}>
-  //     {/* {image.map((i) => (
-  //       <div key={i.name}>
-  //         <img src={i.preview} alt={i.name} />
-  //       </div>
-  //     ))} */}
-  //   </canvas>
-  // );
-  // const imageData = image.map((i) => {
-  //   return i.preview;
-  // });
-
   const dragAndDrop = (
     <div className={classes.DropZone} {...getRootProps({ style })}>
       <input type="file" {...getInputProps()} />
@@ -82,8 +68,8 @@ const DragAndDrop = () => {
 
   return (
     <>
-      {/* if droped, unmount the dragAndDrop then mount imageCanvas */}
-      {display ? dragAndDrop : <Canvas photo={image} />}
+      {/* if droped, unmount the DropZone then mount the Canvas */}
+      {display ? dragAndDrop : <Canvas photo={image} size={divSize} />}
     </>
   );
 };

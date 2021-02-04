@@ -1,0 +1,31 @@
+@import './src/styles/abstracts/mixins';
+
+// .Canvas {
+//   max-width: 700px;
+//   max-height: 700px;
+//   //600px
+//   @include respond(phone) {
+//     max-width: 400px;
+//     max-height: 400px;
+//   }
+//   //900px
+//   @include respond(tab-port) {
+//     max-width: 500px;
+//     max-height: 500px;
+//   }
+//   //1200px
+//   @include respond(tab-land) {
+//     max-width: 600px;
+//     max-height: 600px;
+//   }
+//   //1800px
+//   @include respond(big-desktop) {
+//     max-width: 800px;
+//     max-height: 800px;
+//   }
+// }
+// 0 - 600px:      Phone
+// 600 - 900px:    Tablet portrait
+// 900 - 1200px:   Tablet landscape
+// [1200 - 1800] is where our normal styles apply
+// 1800px + :      Big desktop
