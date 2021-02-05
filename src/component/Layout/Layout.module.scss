@@ -7,15 +7,23 @@
 
   @include respond(tab-port) {
     flex-direction: column-reverse;
+    overflow-y: hidden;
   }
 
   .RecipeControlPanel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3em 0;
-    width: 500px;
+    padding: 1em 0;
+    min-width: 400px;
+    width: 30%;
     background-color: #1a202c; //try d2d2d2
+    @include respond(tab-port) {
+      width: 100%;
+      height: 35%;
+      padding: 1em 0;
+      min-width: 0;
+    }
   }
 
   .RecipeDisplay {
@@ -30,3 +38,9 @@
     }
   }
 }
+
+// 0 - 600px:      Phone
+// 600 - 900px:    Tablet portrait
+// 900 - 1200px:   Tablet landscape
+// [1200 - 1800] is where our normal styles apply
+// 1800px + :      Big desktop

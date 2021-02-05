@@ -2,7 +2,7 @@ import RangeSlider from '../RecipeControl/RangeSlider/RangeSlider';
 import Select from '../RecipeControl/Select/Select';
 import Slider from '../RecipeControl/Slider/Slider';
 import TextInput from '../RecipeControl/TextInput/TextInput';
-
+import ButtonGroup from '../../Layout/RecipeControl/ButtonGroup/ButtonGroup';
 import classes from '../RecipeControl/RecipeControl.module.scss';
 
 const RecipeControl = () => {
@@ -58,6 +58,7 @@ const RecipeControl = () => {
       <div className={classes.FullWidthComponent}>
         <TextInput label="Filter" placeholder=" " />
       </div>
+      <ButtonGroup />
     </div>
   );
 };

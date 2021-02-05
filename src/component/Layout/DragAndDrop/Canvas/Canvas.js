@@ -3,10 +3,13 @@ import classes from '../Canvas/Canvas.module.scss';
 
 const Canvas = ({ photo, size }) => {
   const canvasRef = useRef(null);
-  console.log(size);
+  let { width, height } = size;
+  console.log(`Recipe Display width:${width}, height:${height}`);
   //set a max width and height for canvas based on the div size
-  let canvasWidth = 700;
-  let canvasHeight = 700;
+
+  //1080 x 1080 is the final dimesion of the image when exporting
+  let canvasWidth = 1080;
+  let canvasHeight = 1080;
 
   useEffect(() => {
     const ctx = canvasRef.current.getContext('2d');
@@ -15,7 +18,7 @@ const Canvas = ({ photo, size }) => {
 
     let maxWidth;
     let maxHeight;
-    console.log(canvasWidth, canvasHeight);
+    console.log(`Canvas Width: ${canvasWidth}, Height:${canvasHeight}`);
     const image = new Image();
     image.src = photo[0].preview;
 
