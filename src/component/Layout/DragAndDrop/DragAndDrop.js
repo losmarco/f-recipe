@@ -14,7 +14,7 @@ const reject = {
   border: '4px dashed #d63031',
 };
 
-const DragAndDrop = ({ divSize }) => {
+const DragAndDrop = () => {
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
 
@@ -69,7 +69,7 @@ const DragAndDrop = ({ divSize }) => {
   return (
     <>
       {/* if droped, unmount the DropZone then mount the Canvas */}
-      {display ? dragAndDrop : <Canvas photo={image} size={divSize} />}
+      {display ? dragAndDrop : <Canvas photo={image} />}
     </>
   );
 };

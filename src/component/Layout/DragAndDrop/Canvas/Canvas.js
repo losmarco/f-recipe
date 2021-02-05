@@ -3,8 +3,8 @@ import classes from '../Canvas/Canvas.module.scss';
 
 const Canvas = ({ photo, size }) => {
   const canvasRef = useRef(null);
-  let { width, height } = size;
-  console.log(`Recipe Display width:${width}, height:${height}`);
+  // let { width, height } = size;
+  // console.log(`Recipe Display width:${width}, height:${height}`);
   //set a max width and height for canvas based on the div size
 
   //1080 x 1080 is the final dimesion of the image when exporting
@@ -16,8 +16,6 @@ const Canvas = ({ photo, size }) => {
     const canvasWidth = canvasRef.current.width;
     const canvasHeight = canvasRef.current.height;
 
-    let maxWidth;
-    let maxHeight;
     console.log(`Canvas Width: ${canvasWidth}, Height:${canvasHeight}`);
     const image = new Image();
     image.src = photo[0].preview;
