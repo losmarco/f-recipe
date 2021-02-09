@@ -44,23 +44,33 @@ const Canvas = ({ photo, size }) => {
 
       ctx.drawImage(image, x, y, dWidth, dHeight);
 
-      ctx.font = '25px IBM Plex Sans';
-      ctx.fillStyle = '#6B7280';
-      // ctx.fillText('Camera:', x, (dHeight + y) * 1.1);
-
       //XY Grid for placing text
-      for (let x = xStart; x < dWidth + xStart; x += dWidth / 4) {
-        ctx.moveTo(x, (y + dHeight) * 1.1);
-        ctx.lineTo(x, canvasHeight * 0.9);
+      // for (let x = xStart; x < dWidth + xStart; x += dWidth / 4) {
+      //   ctx.moveTo(x, (y + dHeight) * 1.1);
+      //   ctx.lineTo(x, canvasHeight * 0.9);
+      //   for (let y = yStart; y < yHeight; y += yHeight / 4) {
+      //     ctx.moveTo(x, (y + dHeight) * 1.1);
+      //     ctx.lineTo(canvasWidth - x, (y + dHeight) * 1.1);
+      //   }
+      // }
+      // ctx.strokeStyle = 'aqua';
+      // ctx.stroke();
+      //output 12-16 coordinate for
+
+      for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
+        for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
+          const x = xCell;
+          const y = (yCell + dHeight) * 1.1;
+          console.log(x, y);
+          ctx.fillStyle = '#6B7280';
+          ctx.font = '24px IBM Plex Sans';
+          //need to map this
+
+          ctx.fillText('Camera:', x, y);
+        }
       }
 
-      for (let y = yStart; y < yHeight; y += yHeight / 3) {
-        ctx.moveTo(x, (y + dHeight) * 1.1);
-        ctx.lineTo(canvasWidth - x, (y + dHeight) * 1.1);
-      }
-
-      ctx.strokeStyle = 'aqua';
-      ctx.stroke();
+      // ctx.fillText('Camera:', x, yHeight);
     };
   }, [canvasRef, photo]);
 
