@@ -3,11 +3,7 @@ import classes from '../Canvas/Canvas.module.scss';
 
 const Canvas = ({ photo, size }) => {
   const canvasRef = useRef(null);
-  // let { width, height } = size;
-  // console.log(`Recipe Display width:${width}, height:${height}`);
-  //set a max width and height for canvas based on the div size
-
-  //1080 x 1080 is the final dimesion of the image when exporting
+  //Final dimesion of the image when exporting
   let canvasWidth = 1080;
   let canvasHeight = 1080;
 
@@ -16,9 +12,9 @@ const Canvas = ({ photo, size }) => {
     const canvasWidth = canvasRef.current.width;
     const canvasHeight = canvasRef.current.height;
 
-    console.log(`Canvas Width: ${canvasWidth}, HeighRedt:${canvasHeight}`);
     const image = new Image();
     image.src = photo[0].preview;
+
     //determin vertical or horizontal(width> height), then place image
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -48,10 +44,10 @@ const Canvas = ({ photo, size }) => {
       // for (let x = xStart; x < dWidth + xStart; x += dWidth / 4) {
       //   ctx.moveTo(x, (y + dHeight) * 1.1);
       //   ctx.lineTo(x, canvasHeight * 0.9);
-      //   for (let y = yStart; y < yHeight; y += yHeight / 4) {
-      //     ctx.moveTo(x, (y + dHeight) * 1.1);
-      //     ctx.lineTo(canvasWidth - x, (y + dHeight) * 1.1);
-      //   }
+      // }
+      // for (let y = yStart; y < yHeight; y += yHeight / 4) {
+      //   ctx.moveTo(x, (y + dHeight) * 1.1);
+      //   ctx.lineTo(canvasWidth - x, (y + dHeight) * 1.1);
       // }
       // ctx.strokeStyle = 'aqua';
       // ctx.stroke();
@@ -60,17 +56,15 @@ const Canvas = ({ photo, size }) => {
       for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
         for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
           const x = xCell;
-          const y = (yCell + dHeight) * 1.1;
+          const y = (yCell + dHeight) * 1.1 + 20;
           console.log(x, y);
           ctx.fillStyle = '#6B7280';
           ctx.font = '24px IBM Plex Sans';
-          //need to map this
 
+          //need to map this
           ctx.fillText('Camera:', x, y);
         }
       }
-
-      // ctx.fillText('Camera:', x, yHeight);
     };
   }, [canvasRef, photo]);
 
