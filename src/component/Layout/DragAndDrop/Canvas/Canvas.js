@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import classes from '../Canvas/Canvas.module.scss';
 
-const Canvas = ({ photo, size }) => {
+import classes from '../Canvas/Canvas.module.scss';
+// import { RecipeContext } from '../../../../context/RecipeContext';
+
+const Canvas = ({ photo }) => {
   const canvasRef = useRef(null);
   //Final dimesion of the image when exporting
   let canvasWidth = 1080;
@@ -38,33 +40,51 @@ const Canvas = ({ photo, size }) => {
       let yHeight = canvasHeight * 0.9 - (y + dHeight) * 1.1;
       //Need to handle image ratio, cuz if 3:2 -> too large on the screen
 
+      //Display Image
       ctx.drawImage(image, x, y, dWidth, dHeight);
 
-      //XY Grid for placing text
-      // for (let x = xStart; x < dWidth + xStart; x += dWidth / 4) {
-      //   ctx.moveTo(x, (y + dHeight) * 1.1);
-      //   ctx.lineTo(x, canvasHeight * 0.9);
-      // }
-      // for (let y = yStart; y < yHeight; y += yHeight / 4) {
-      //   ctx.moveTo(x, (y + dHeight) * 1.1);
-      //   ctx.lineTo(canvasWidth - x, (y + dHeight) * 1.1);
-      // }
-      // ctx.strokeStyle = 'aqua';
-      // ctx.stroke();
-      //output 12-16 coordinate for
+      const data = [
+        { label: 'Camera' },
+        { label: 'Film Simulation' },
+        { label: 'Grain' },
+        { label: 'DR' },
+        { label: 'Color Chrome' },
+        { label: 'Color Chrome Blue' },
+        { label: 'NR' },
+        { label: 'H' },
+        { label: 'S' },
+        { label: 'C' },
+        { label: 'S' },
+        { label: 'Clarity' },
+        { label: 'WB' },
+        { label: 'ISO' },
+        { label: 'Expo Comp' },
+        { label: 'Filter' },
+      ];
 
+      //Get coordinate for label position
+      let coordinate = [];
       for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
         for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
           const x = xCell;
           const y = (yCell + dHeight) * 1.1 + 20;
-          console.log(x, y);
-          ctx.fillStyle = '#6B7280';
-          ctx.font = '24px IBM Plex Sans';
-
-          //need to map this
-          ctx.fillText('Camera:', x, y);
+          const temp = { x, y };
+          coordinate.push(temp);
         }
       }
+
+      const newD = data.map((d, i) => {
+        const label = d.label;
+        const combo = { label, ...coordinate[i] };
+        return combo;
+      });
+
+      //Display Text
+      ctx.fillStyle = '#6B7280';
+      ctx.font = '24px IBM Plex Sans';
+      newD.forEach((e) => {
+        ctx.fillText(e.label, e.x, e.y);
+      });
     };
   }, [canvasRef, photo]);
 
