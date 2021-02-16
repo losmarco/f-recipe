@@ -64,8 +64,9 @@ const Canvas = ({ photo }) => {
 
       //Get coordinate for label position
       let coordinate = [];
-      for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
-        for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
+
+      for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
+        for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
           const x = xCell;
           const y = (yCell + dHeight) * 1.1 + 20;
           const temp = { x, y };
@@ -83,7 +84,7 @@ const Canvas = ({ photo }) => {
       ctx.fillStyle = '#6B7280';
       ctx.font = '24px IBM Plex Sans';
       newD.forEach((e) => {
-        ctx.fillText(e.label, e.x, e.y);
+        ctx.fillText(e.label + ':', e.x, e.y);
       });
     };
   }, [canvasRef, photo]);
