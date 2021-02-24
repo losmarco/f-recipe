@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 
 import classes from '../Canvas/Canvas.module.scss';
-// import { RecipeContext } from '../../../../context/RecipeContext';
+import { RecipeContext } from '../../../../context/RecipeContext';
 
 const Canvas = ({ photo }) => {
   const canvasRef = useRef(null);
+  const [state] = useContext(RecipeContext);
+
   //Final dimesion of the image when exporting
   let canvasWidth = 1080;
   let canvasHeight = 1080;
@@ -16,7 +18,7 @@ const Canvas = ({ photo }) => {
 
     const image = new Image();
     image.src = photo[0].preview;
-
+    console.log(state);
     //determin vertical or horizontal(width> height), then place image
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -43,24 +45,24 @@ const Canvas = ({ photo }) => {
       //Display Image
       ctx.drawImage(image, x, y, dWidth, dHeight);
 
-      const data = [
-        { label: 'Camera' },
-        { label: 'Film Simulation' },
-        { label: 'Grain' },
-        { label: 'DR' },
-        { label: 'Color Chrome' },
-        { label: 'Color Chrome Blue' },
-        { label: 'NR' },
-        { label: 'H' },
-        { label: 'S' },
-        { label: 'C' },
-        { label: 'S' },
-        { label: 'Clarity' },
-        { label: 'WB' },
-        { label: 'ISO' },
-        { label: 'Expo Comp' },
-        { label: 'Filter' },
-      ];
+      // const data = [
+      //   { label: 'Camera' },
+      //   { label: 'Film Simulation' },
+      //   { label: 'Grain' },
+      //   { label: 'DR' },
+      //   { label: 'Color Chrome' },
+      //   { label: 'Color Chrome Blue' },
+      //   { label: 'NR' },
+      //   { label: 'H' },
+      //   { label: 'S' },
+      //   { label: 'C' },
+      //   { label: 'S' },
+      //   { label: 'Clarity' },
+      //   { label: 'WB' },
+      //   { label: 'ISO' },
+      //   { label: 'Expo Comp' },
+      //   { label: 'Filter' },
+      // ];
 
       //Get coordinate for label position
       let coordinate = [];
@@ -74,9 +76,10 @@ const Canvas = ({ photo }) => {
         }
       }
 
-      const newD = data.map((d, i) => {
+      const newD = state.map((d, i) => {
         const label = d.label;
-        const combo = { label, ...coordinate[i] };
+        const value = d.value;
+        const combo = { label, value, ...coordinate[i] };
         return combo;
       });
 
@@ -84,10 +87,10 @@ const Canvas = ({ photo }) => {
       ctx.fillStyle = '#6B7280';
       ctx.font = '24px IBM Plex Sans';
       newD.forEach((e) => {
-        ctx.fillText(e.label + ':', e.x, e.y);
+        ctx.fillText(`${e.label}:`, e.x, e.y);
       });
     };
-  }, [canvasRef, photo]);
+  }, [canvasRef, photo, state]);
 
   return (
     <canvas

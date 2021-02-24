@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Select from 'react-select';
-
 import classes from '../Select/Select.module.scss';
+import { RecipeContext } from '../../../../context/RecipeContext';
 import {
   cameraModel,
   filmSimulation,
@@ -12,7 +12,7 @@ import {
 
 const SelectInput = ({ label, options }) => {
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const { updateRecipe } = useContext(RecipeContext);
   const renderSelectData = (options) => {
     switch (options) {
       case 'cameraModel':
@@ -31,6 +31,13 @@ const SelectInput = ({ label, options }) => {
         return null;
     }
   };
+
+  const getType = (e) => {
+    let name = options;
+    let value = e.label;
+    updateRecipe(name, value);
+  };
+
   return (
     <>
       <div className={classes.Label}>
@@ -40,7 +47,7 @@ const SelectInput = ({ label, options }) => {
         maxMenuHeight={220}
         className={classes.Select}
         defaultValue={selectedOption}
-        onChange={setSelectedOption}
+        onChange={setSelectedOption && getType}
         options={renderSelectData(options)}
         theme={(theme) => ({
           ...theme,
