@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../RangeSlider/RangeSlider.module.scss';
+import { RecipeContext } from '../../../../context/RecipeContext';
 import { expoComp } from '../../../../docs/data';
+let Fraction = require('fraction.js');
 const { Range } = Slider;
 
-const RangeSlider = ({ label }) => {
-  const [rangeValue, setRangeValue] = useState([0, 0]);
+const RangeSlider = ({ label, name }) => {
+  const { updateRecipe } = useContext(RecipeContext);
+
+  const dToF = (value) => {
+    let a = new Fraction(value[0]).toFraction(true);
+    let b = new Fraction(value[1]).toFraction(true);
+    let arr = [a, b];
+    return arr;
+  };
   return (
     <>
       <div className={classes.RangeSliderLabel}>
@@ -16,8 +25,9 @@ const RangeSlider = ({ label }) => {
         className={classes.RangeSliderInput}
         min={expoComp.min}
         max={expoComp.max}
-        defaultValue={rangeValue}
-        onChange={(value) => setRangeValue(value)}
+        defaultValue={[0, 0]}
+        // onChange={(value) => updateRecipe(name, value)}
+        onChange={(value) => updateRecipe(name, dToF(value))}
         marks={expoComp.marks}
         step={1 / 3}
         // value={/*Set current value of slider*/}

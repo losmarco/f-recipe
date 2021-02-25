@@ -5,7 +5,7 @@ import { RecipeContext } from '../../../../context/RecipeContext';
 
 const Canvas = ({ photo }) => {
   const canvasRef = useRef(null);
-  const [state] = useContext(RecipeContext);
+  const { state } = useContext(RecipeContext);
 
   //Final dimesion of the image when exporting
   let canvasWidth = 1080;
@@ -87,7 +87,11 @@ const Canvas = ({ photo }) => {
       ctx.fillStyle = '#6B7280';
       ctx.font = '24px IBM Plex Sans';
       newD.forEach((e) => {
-        ctx.fillText(`${e.label}:`, e.x, e.y);
+        if (e.value == null) {
+          ctx.fillText(`${e.label}: `, e.x, e.y);
+        } else {
+          ctx.fillText(`${e.label}: ${e.value}`, e.x, e.y);
+        }
       });
     };
   }, [canvasRef, photo, state]);
