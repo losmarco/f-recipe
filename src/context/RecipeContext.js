@@ -1,6 +1,6 @@
-import { createContext, useReducer } from 'react';
+import { useState, createContext, useReducer } from 'react';
 import recipeReducer from './RecipeReducer';
-import { UPDATE_RECIPE, TOGGLE_RECIPE } from './RecipeActions';
+import { UPDATE_RECIPE, TOGGLE_RECIPE, RESET_RECIPE } from './RecipeActions';
 
 export const RecipeProvider = ({ children }) => {
   const initState = [
@@ -102,6 +102,7 @@ export const RecipeProvider = ({ children }) => {
     },
   ];
   const [state, dispatch] = useReducer(recipeReducer, initState);
+  const [recipeControl, setrecipeControl] = useState(0);
   //UPDATE
   const updateRecipe = (name, value) => {
     dispatch({
@@ -119,8 +120,19 @@ export const RecipeProvider = ({ children }) => {
       payload: nameID,
     });
   };
+  const resetRecipe = () => {
+    dispatch({
+      type: RESET_RECIPE,
+      payload: initState,
+    });
+    //dirty way to reset the UI
+    setrecipeControl(recipeControl + 1);
+  };
   return (
-    <RecipeContext.Provider value={{ state, updateRecipe, toggleRecipe }}>
+    <RecipeContext.Provider
+      key={recipeControl}
+      value={{ state, updateRecipe, toggleRecipe, resetRecipe }}
+    >
       {children}
     </RecipeContext.Provider>
   );

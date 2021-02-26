@@ -86,6 +86,7 @@ const Canvas = ({ photo }) => {
       //Display Text
       ctx.fillStyle = '#6B7280';
       ctx.font = '24px IBM Plex Sans';
+      ctx.fontVariantNumeric = 'diagonal-fractions';
       newD.forEach((e) => {
         if (e.value == null) {
           ctx.fillText(`${e.label}: `, e.x, e.y);

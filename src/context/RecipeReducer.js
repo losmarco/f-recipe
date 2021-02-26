@@ -1,5 +1,5 @@
-import { UPDATE_RECIPE, TOGGLE_RECIPE } from './RecipeActions';
-// import produce from 'immer';
+import { UPDATE_RECIPE, TOGGLE_RECIPE, RESET_RECIPE } from './RecipeActions';
+
 const recipeReducer = (state, action) => {
   switch (action.type) {
     case UPDATE_RECIPE:
@@ -15,6 +15,8 @@ const recipeReducer = (state, action) => {
 
     case TOGGLE_RECIPE:
       return {};
+    case RESET_RECIPE:
+      return action.payload;
     default:
       return state;
   }
