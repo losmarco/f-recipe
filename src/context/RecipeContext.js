@@ -103,6 +103,7 @@ export const RecipeProvider = ({ children }) => {
   ];
   const [state, dispatch] = useReducer(recipeReducer, initState);
   const [recipeControl, setrecipeControl] = useState(0);
+  const [canvasRef, setCanvasRef] = useState(null);
   //UPDATE
   const updateRecipe = (name, value) => {
     dispatch({
@@ -120,6 +121,7 @@ export const RecipeProvider = ({ children }) => {
       payload: nameID,
     });
   };
+  //RESET
   const resetRecipe = () => {
     dispatch({
       type: RESET_RECIPE,
@@ -128,10 +130,27 @@ export const RecipeProvider = ({ children }) => {
     //dirty way to reset the UI
     setrecipeControl(recipeControl + 1);
   };
+  const exportRecipe = () => {
+    canvasRef.current.toBlob((blob) => {
+      const anchor = document.createElement('a');
+      anchor.download = 'recipe.png';
+      anchor.href = URL.createObjectURL(blob);
+      anchor.click();
+      URL.revokeObjectURL(anchor.href);
+    }, 'image/jpeg');
+  };
+
   return (
     <RecipeContext.Provider
       key={recipeControl}
-      value={{ state, updateRecipe, toggleRecipe, resetRecipe }}
+      value={{
+        state,
+        updateRecipe,
+        toggleRecipe,
+        resetRecipe,
+        exportRecipe,
+        setCanvasRef,
+      }}
     >
       {children}
     </RecipeContext.Provider>

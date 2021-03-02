@@ -17,6 +17,7 @@ const recipeReducer = (state, action) => {
       return {};
     case RESET_RECIPE:
       return action.payload;
+
     default:
       return state;
   }

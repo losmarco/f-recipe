@@ -26,11 +26,9 @@ const RangeSlider = ({ label, name }) => {
         min={expoComp.min}
         max={expoComp.max}
         defaultValue={[0, 0]}
-        // onChange={(value) => updateRecipe(name, value)}
         onChange={(value) => updateRecipe(name, dToF(value))}
         marks={expoComp.marks}
         step={1 / 3}
-        // value={/*Set current value of slider*/}
         railStyle={{ backgroundColor: '#EDF2F7' }}
         trackStyle={[{ backgroundColor: '#6B7280' }]}
         handleStyle={[
