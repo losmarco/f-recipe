@@ -1,6 +1,5 @@
 import classes from '../Layout/Layout.module.scss';
 import RecipeControl from '../Layout/RecipeControl/RecipeControl';
-
 import DragAndDrop from '../Layout/DragAndDrop/DragAndDrop';
 
 const Layout = () => {

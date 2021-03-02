@@ -41,11 +41,15 @@ const RecipeControl = () => {
       ))}
       {/* White Balance */}
       <div className={classes.ControlComponent}>
-        <TextInput label="White Balance" placeholder="7100k, R:-4 B:-2" />
+        <TextInput
+          label="White Balance"
+          name="whiteBalance"
+          placeholder="7100k, R:-4 B:-2"
+        />
       </div>
       {/* ISO */}
       <div className={classes.ControlComponent}>
-        <TextInput label="ISO" placeholder="Auto, up to iso 6400" />
+        <TextInput label="ISO" name="iso" placeholder="Auto, up to iso 6400" />
       </div>
       {/* Exposure Compensation */}
       <div className={classes.FullWidthComponent}>
@@ -56,7 +60,7 @@ const RecipeControl = () => {
       </div>
       {/* Filter */}
       <div className={classes.FullWidthComponent}>
-        <TextInput label="Filter" placeholder=" " />
+        <TextInput label="Filter" name="filter" placeholder=" " />
       </div>
       <ButtonGroup />
     </div>

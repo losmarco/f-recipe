@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../Slider/Slider.module.scss';
-
+import { RecipeContext } from '../../../../context/RecipeContext';
 import {
   noiseReduction,
   highlight,
@@ -13,8 +13,7 @@ import {
 } from '../../../../docs/data';
 
 const SliderInput = ({ label, name }) => {
-  const [sliderPoint, setSliderPoint] = useState(0);
-
+  const { updateRecipe } = useContext(RecipeContext);
   const renderMinMaxData = (name) => {
     switch (name) {
       case 'noiseReduction':
@@ -43,8 +42,8 @@ const SliderInput = ({ label, name }) => {
         className={classes.SliderInput}
         min={renderMinMaxData(name).min}
         max={renderMinMaxData(name).max}
-        defaultValue={sliderPoint}
-        onChange={(value) => setSliderPoint(value)}
+        defaultValue={0}
+        onChange={(value) => updateRecipe(name, value)}
         startPoint={0}
         marks={renderMinMaxData(name).marks}
         railStyle={{ backgroundColor: '#EDF2F7' }}

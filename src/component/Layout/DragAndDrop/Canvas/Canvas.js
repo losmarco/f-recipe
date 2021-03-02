@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import classes from '../Canvas/Canvas.module.scss';
+import React, { useEffect, useRef, useContext } from 'react';
 
-const Canvas = ({ photo, size }) => {
+import classes from '../Canvas/Canvas.module.scss';
+import { RecipeContext } from '../../../../context/RecipeContext';
+
+const Canvas = ({ photo }) => {
   const canvasRef = useRef(null);
+  const { state, setCanvasRef } = useContext(RecipeContext);
+
   //Final dimesion of the image when exporting
   let canvasWidth = 1080;
   let canvasHeight = 1080;
@@ -38,36 +42,44 @@ const Canvas = ({ photo, size }) => {
       let yHeight = canvasHeight * 0.9 - (y + dHeight) * 1.1;
       //Need to handle image ratio, cuz if 3:2 -> too large on the screen
 
+      //Display Image
       ctx.drawImage(image, x, y, dWidth, dHeight);
 
-      //XY Grid for placing text
-      // for (let x = xStart; x < dWidth + xStart; x += dWidth / 4) {
-      //   ctx.moveTo(x, (y + dHeight) * 1.1);
-      //   ctx.lineTo(x, canvasHeight * 0.9);
-      // }
-      // for (let y = yStart; y < yHeight; y += yHeight / 4) {
-      //   ctx.moveTo(x, (y + dHeight) * 1.1);
-      //   ctx.lineTo(canvasWidth - x, (y + dHeight) * 1.1);
-      // }
-      // ctx.strokeStyle = 'aqua';
-      // ctx.stroke();
-      //output 12-16 coordinate for
+      //Get coordinate for label position
+      let coordinate = [];
 
-      for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
-        for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
+      for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
+        for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
           const x = xCell;
           const y = (yCell + dHeight) * 1.1 + 20;
-          console.log(x, y);
-          ctx.fillStyle = '#6B7280';
-          ctx.font = '24px IBM Plex Sans';
-
-          //need to map this
-          ctx.fillText('Camera:', x, y);
+          const temp = { x, y };
+          coordinate.push(temp);
         }
       }
-    };
-  }, [canvasRef, photo]);
 
+      const newD = state.map((d, i) => {
+        const label = d.label;
+        const value = d.value;
+        const combo = { label, value, ...coordinate[i] };
+        return combo;
+      });
+
+      //Display Text
+      ctx.fillStyle = '#6B7280';
+      ctx.font = '24px IBM Plex Sans';
+      newD.forEach((e) => {
+        if (e.value == null) {
+          ctx.fillText(`${e.label}: `, e.x, e.y);
+        } else {
+          ctx.fillText(`${e.label}: ${e.value}`, e.x, e.y);
+        }
+      });
+    };
+  }, [canvasRef, photo, state, setCanvasRef]);
+
+  useEffect(() => {
+    setCanvasRef(canvasRef);
+  }, [setCanvasRef]);
   return (
     <canvas
       className={classes.Canvas}
