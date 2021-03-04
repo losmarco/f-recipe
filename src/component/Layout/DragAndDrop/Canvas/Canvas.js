@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 
 import classes from '../Canvas/Canvas.module.scss';
 import { RecipeContext } from '../../../../context/RecipeContext';
@@ -23,6 +23,7 @@ const Canvas = ({ photo }) => {
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     image.onload = () => {
+      console.log('loaded image');
       let scale = Math.min(
         (canvasWidth / image.width) * 0.85,
         (canvasHeight / image.height) * 0.85
@@ -47,7 +48,7 @@ const Canvas = ({ photo }) => {
 
       //Get coordinate for label position
       let coordinate = [];
-
+      //Assign Text
       for (let yCell = yStart; yCell < yHeight; yCell += yHeight / 4) {
         for (let xCell = xStart; xCell < dWidth + xStart; xCell += dWidth / 4) {
           const x = xCell;
@@ -56,7 +57,7 @@ const Canvas = ({ photo }) => {
           coordinate.push(temp);
         }
       }
-
+      //Assign Text
       const newD = state.map((d, i) => {
         const label = d.label;
         const value = d.value;
@@ -75,11 +76,16 @@ const Canvas = ({ photo }) => {
         }
       });
     };
-  }, [canvasRef, photo, state, setCanvasRef]);
+    //how bout outside of the re-render
+  }, [canvasRef, photo, state]);
 
   useEffect(() => {
     setCanvasRef(canvasRef);
   }, [setCanvasRef]);
+
+  useEffect(() => {
+    console.log('state changed');
+  }, [state]);
   return (
     <canvas
       className={classes.Canvas}

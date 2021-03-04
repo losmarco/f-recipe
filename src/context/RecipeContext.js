@@ -12,7 +12,7 @@ export const RecipeProvider = ({ children }) => {
     },
     {
       nameID: 'filmSimulation',
-      label: 'Film Simulation',
+      label: 'Film',
       value: null,
       checked: true,
     },
