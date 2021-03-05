@@ -48,19 +48,19 @@ export const RecipeProvider = ({ children }) => {
     },
     {
       nameID: 'highlight',
-      label: 'H',
+      label: 'Hightlight',
       value: 0,
       checked: true,
     },
     {
       nameID: 'shadow',
-      label: 'S',
+      label: 'Shadow',
       value: 0,
       checked: true,
     },
     {
       nameID: 'color',
-      label: 'C',
+      label: 'Color',
       value: 0,
       checked: true,
     },
@@ -72,7 +72,7 @@ export const RecipeProvider = ({ children }) => {
     },
     {
       nameID: 'clarity',
-      label: 'C',
+      label: 'Clarity',
       value: 0,
       checked: true,
     },
@@ -91,7 +91,7 @@ export const RecipeProvider = ({ children }) => {
     {
       nameID: 'expoComp',
       label: 'EV',
-      value: [0, 0],
+      value: 0,
       checked: true,
     },
     {
@@ -101,6 +101,7 @@ export const RecipeProvider = ({ children }) => {
       checked: true,
     },
   ];
+
   const [state, dispatch] = useReducer(recipeReducer, initState);
   const [recipeControl, setrecipeControl] = useState(0);
   const [canvasRef, setCanvasRef] = useState(null);

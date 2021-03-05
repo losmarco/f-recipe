@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import uploadIcon from '../../../assets/icons/upload.svg';
 import classes from '../DragAndDrop/DragAndDrop.module.scss';
-import Canvas from './Canvas/Canvas';
-
+// import Canvas from './Canvas/Canvas';
+import Dom from './Dom/Dom';
 const accept = {
   pointer: 'cursor',
   backgroundColor: '#dfe6e9',
@@ -69,7 +69,7 @@ const DragAndDrop = () => {
   return (
     <>
       {/* if droped, unmount the DropZone then mount the Canvas */}
-      {display ? dragAndDrop : <Canvas photo={image} />}
+      {display ? dragAndDrop : <Dom photo={image} />}
     </>
   );
 };

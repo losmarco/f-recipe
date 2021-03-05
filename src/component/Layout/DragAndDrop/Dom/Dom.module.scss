@@ -1,0 +1,75 @@
+@import './src/styles/abstracts/mixins';
+@import './src/styles/base/base';
+.Dom {
+  background-color: #fff;
+
+  //1200=1800
+  width: 700px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  .Image {
+    padding-top: 6%;
+    max-width: 85%;
+    height: auto;
+  }
+
+  .RecipeGroup {
+    margin-top: 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    width: 85%;
+    height: 40%;
+  }
+
+  .RecipeText {
+    font-size: 1.6rem;
+    color: #6b7280;
+  }
+
+  .RecipeTextFraction {
+    font-size: 1.6rem;
+    color: #6b7280;
+    font-feature-settings: frac;
+    font-variant-numeric: diagonal-fractions;
+  }
+}
+// @include respond(tab-land) {
+//   max-width: 600px;
+//   max-height: 600px;
+// }
+// @media only screen and (max-height: 46.875em) {
+//   max-width: 550px;
+//   max-height: 550px;
+// }
+// @media only screen and (max-height: 35.625em) {
+//   max-width: 480px;
+//   max-height: 480px;
+// }
+
+// @media only screen and (max-height: 31.25em) {
+//   max-width: 450px;
+//   max-height: 450px;
+// }
+// //1050px
+// @media only screen and (max-width: 65.625em) {
+//   max-width: 500px;
+//   max-height: 500px;
+// }
+
+// //950px
+// @media only screen and (max-width: 59.375em) {
+//   max-width: 450px;
+//   max-height: 450px;
+// }
+
+// //0-600px
+// @include respond(phone) {
+//   min-width: 300px;
+//   min-height: 300px;
+//   padding: 0 1em;
+// }
