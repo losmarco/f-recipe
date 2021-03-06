@@ -9,9 +9,7 @@ const ButtonGroup = () => {
   return (
     <div className={classes.ButtonGroup}>
       <Button onClick={resetRecipe}>Reset</Button>
-      <a href={exportRecipe} download onClick={exportRecipe}>
-        <Button>Export</Button>
-      </a>
+      <Button onClick={exportRecipe}>Export</Button>
     </div>
   );
 };

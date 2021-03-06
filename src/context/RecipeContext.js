@@ -1,7 +1,7 @@
 import { useState, createContext, useReducer } from 'react';
 import recipeReducer from './RecipeReducer';
 import { UPDATE_RECIPE, TOGGLE_RECIPE, RESET_RECIPE } from './RecipeActions';
-
+import domtoimage from 'dom-to-image';
 export const RecipeProvider = ({ children }) => {
   const initState = [
     {
@@ -132,13 +132,12 @@ export const RecipeProvider = ({ children }) => {
     setrecipeControl(recipeControl + 1);
   };
   const exportRecipe = () => {
-    canvasRef.current.toBlob((blob) => {
-      const anchor = document.createElement('a');
-      anchor.download = 'recipe.png';
-      anchor.href = URL.createObjectURL(blob);
-      anchor.click();
-      URL.revokeObjectURL(anchor.href);
-    }, 'image/jpeg');
+    domtoimage.toPng(canvasRef.current).then(function (blob) {
+      let link = document.createElement('a');
+      link.download = 'frecipe-name';
+      link.href = blob;
+      link.click();
+    });
   };
 
   return (
