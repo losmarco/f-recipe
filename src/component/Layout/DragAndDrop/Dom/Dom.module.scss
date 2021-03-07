@@ -85,12 +85,51 @@
       grid-template-columns: repeat(4, 1fr);
       width: 85%;
       height: 100%;
-      background-color: pink;
     }
 
     .RecipeTextFraction {
       font-feature-settings: frac;
       font-variant-numeric: diagonal-fractions;
+    }
+  }
+}
+.Hidden {
+  display: none;
+  .ExportDom {
+    width: 1080px;
+    height: 1080px;
+    background-color: #fff;
+
+    .Content {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.6rem;
+      color: #6b7280;
+
+      .ImageContainer {
+        display: flex;
+        justify-content: center;
+        .Image {
+          padding-top: 6%;
+          max-width: 85%;
+          height: auto;
+        }
+      }
+      .RecipeGroup {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 85%;
+        height: 100%;
+      }
+
+      .RecipeTextFraction {
+        font-feature-settings: frac;
+        font-variant-numeric: diagonal-fractions;
+      }
     }
   }
 }
