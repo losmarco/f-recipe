@@ -94,9 +94,10 @@
   }
 }
 .Hidden {
-  display: none;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
   .ExportDom {
-    position: relative;
     width: 1080px;
     height: 1080px;
     background-color: #fff;
