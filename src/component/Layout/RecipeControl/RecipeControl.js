@@ -1,4 +1,3 @@
-import RangeSlider from '../RecipeControl/RangeSlider/RangeSlider';
 import Select from '../RecipeControl/Select/Select';
 import Slider from '../RecipeControl/Slider/Slider';
 import TextInput from '../RecipeControl/TextInput/TextInput';
@@ -36,7 +35,7 @@ const RecipeControl = () => {
       {/* Camera Tone */}
       {recipeTone.map(({ label, name }) => (
         <div className={classes.ControlComponent} key={name}>
-          <Slider label={label} name={name} />
+          <Slider label={label} name={name} step={1} />
         </div>
       ))}
       {/* White Balance */}
@@ -53,9 +52,10 @@ const RecipeControl = () => {
       </div>
       {/* Exposure Compensation */}
       <div className={classes.FullWidthComponent}>
-        <RangeSlider
+        <Slider
           label="Exposure compensation (1/3ev step)"
           name="expoComp"
+          step={1 / 3}
         />
       </div>
       {/* Filter */}

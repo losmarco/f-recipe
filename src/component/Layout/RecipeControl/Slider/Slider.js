@@ -10,9 +10,10 @@ import {
   color,
   sharpness,
   clarity,
+  expoComp,
 } from '../../../../docs/data';
 
-const SliderInput = ({ label, name }) => {
+const SliderInput = ({ label, name, step }) => {
   const { updateRecipe } = useContext(RecipeContext);
   const renderMinMaxData = (name) => {
     switch (name) {
@@ -28,6 +29,8 @@ const SliderInput = ({ label, name }) => {
         return sharpness;
       case 'clarity':
         return clarity;
+      case 'expoComp':
+        return expoComp;
       default:
         return null;
     }
@@ -43,6 +46,7 @@ const SliderInput = ({ label, name }) => {
         min={renderMinMaxData(name).min}
         max={renderMinMaxData(name).max}
         defaultValue={0}
+        step={step}
         onChange={(value) => updateRecipe(name, value)}
         startPoint={0}
         marks={renderMinMaxData(name).marks}
