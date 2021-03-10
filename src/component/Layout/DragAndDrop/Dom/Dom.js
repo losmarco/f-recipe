@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import classes from '../Dom/Dom.module.scss';
 import { RecipeContext } from '../../../../context/RecipeContext';
 let Fraction = require('fraction.js');
@@ -6,15 +6,32 @@ let Fraction = require('fraction.js');
 const Dom = ({ photo }) => {
   const { state, setCanvasRef } = useContext(RecipeContext);
   const canvasRef = useRef(null);
-  // let canvasWidth = 1080;
-  // let canvasHeight = 1080;
-  let image = photo[0];
   useEffect(() => {
     setCanvasRef(canvasRef);
   }, [setCanvasRef]);
+  const [isHorizontal, setHorizontal] = useState(true);
+  let img = new Image();
+  let image = photo[0];
+  img.onload = function () {
+    //handle vertical and horiztonal image
+
+    //For Horiztonal and width= height
+    if (this.width > this.height) {
+      setHorizontal(true);
+      console.log('height>width');
+    }
+    //vertical
+    else {
+      setHorizontal(false);
+
+      console.log('width>height');
+    }
+  };
+  img.src = image.preview;
+
   //Uploaded Image and Recipe
   const content = (
-    <div className={classes.Content}>
+    <div className={isHorizontal ? classes.HorizontalContent : classes.VerticalContent}>
       <div className={classes.ImageContainer}>
         <img className={classes.Image} src={image.preview} alt={image.name} />
       </div>
