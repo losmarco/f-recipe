@@ -3,9 +3,7 @@
 
 .Dom {
   background-color: #fff;
-  display: none;
   position: absolute;
-
   width: 700px;
   height: 700px;
   @include respond(tab-land) {
@@ -54,9 +52,9 @@
   }
 }
 .Hidden {
-  // position: absolute;
-  // left: -9999px;
-  // top: -9999px;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
 
   .ExportDom {
     width: 1080px;
