@@ -3,9 +3,8 @@
 
 .Dom {
   background-color: #fff;
-
+  display: none;
   position: absolute;
-  //1200-1800px
 
   width: 700px;
   height: 700px;
@@ -53,85 +52,103 @@
     height: 48%;
     margin: 0 1em;
   }
-
-  .Content {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.6rem;
-    color: #6b7280;
-
-    @media only screen and (max-width: 37.5em) {
-      font-size: 1rem;
-    }
-    .ImageContainer {
-      display: flex;
-      justify-content: center;
-      .Image {
-        padding-top: 6%;
-        max-width: 85%;
-        height: auto;
-
-        @include respond(phone) {
-          padding-top: 5%;
-        }
-      }
-    }
-    .RecipeGroup {
-      margin-top: 2rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      width: 85%;
-      height: 100%;
-    }
-
-    .RecipeTextFraction {
-      font-feature-settings: frac;
-      font-variant-numeric: diagonal-fractions;
-    }
-  }
 }
 .Hidden {
-  position: absolute;
-  left: -9999px;
-  top: -9999px;
+  // position: absolute;
+  // left: -9999px;
+  // top: -9999px;
+
   .ExportDom {
     width: 1080px;
     height: 1080px;
     background-color: #fff;
 
-    .Content {
-      display: flex;
-      height: 100%;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.6rem;
-      color: #6b7280;
-
-      .ImageContainer {
-        display: flex;
-        justify-content: center;
-        .Image {
-          padding-top: 6%;
-          max-width: 85%;
-          height: auto;
+    .VerticalContent {
+      justify-content: space-around;
+      font-size: 2.8rem;
+      .RecipeGroup {
+        width: 36%;
+        div {
+          padding: 0.5rem 0;
         }
       }
-      .RecipeGroup {
-        margin-top: 2rem;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        width: 85%;
-        height: 100%;
-      }
+    }
+  }
+}
 
-      .RecipeTextFraction {
-        font-feature-settings: frac;
-        font-variant-numeric: diagonal-fractions;
+//Horizontal Layout
+.HorizontalContent {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #6b7280;
+  @media only screen and (max-width: 65.625em) {
+    font-size: 1.3rem;
+  }
+  @media only screen and (max-width: 37.5em) {
+    font-size: 1rem;
+  }
+  .ImageContainer {
+    display: flex;
+    justify-content: center;
+    .Image {
+      padding-top: 6%;
+      max-width: 85%;
+      height: auto;
+
+      @include respond(phone) {
+        padding-top: 5%;
       }
     }
+  }
+  .RecipeGroup {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 85%;
+    height: 100%;
+  }
+
+  .RecipeTextFraction {
+    font-feature-settings: frac;
+    font-variant-numeric: diagonal-fractions;
+  }
+}
+//Vertical Layout
+.VerticalContent {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.6rem;
+  color: #6b7280;
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 1.2rem;
+  }
+  .ImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .Image {
+      padding-left: 5%;
+      max-height: 86%;
+    }
+  }
+  .RecipeGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .RecipeTextFraction {
+    font-feature-settings: frac;
+    font-variant-numeric: diagonal-fractions;
   }
 }

@@ -132,10 +132,8 @@ export const RecipeProvider = ({ children }) => {
     setrecipeControl(recipeControl + 1);
   };
   const exportRecipe = () => {
-    console.log(canvasRef.current);
     domtoimage.toPng(canvasRef.current).then(function (blob) {
       let link = document.createElement('a');
-
       link.download = 'frecipe-name';
       link.href = blob;
       link.click();
