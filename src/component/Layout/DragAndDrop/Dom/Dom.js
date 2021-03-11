@@ -18,13 +18,10 @@ const Dom = ({ photo }) => {
     //For Horiztonal and width= height
     if (this.width > this.height) {
       setHorizontal(true);
-      console.log('height>width');
     }
     //vertical
     else {
       setHorizontal(false);
-
-      console.log('width>height');
     }
   };
   img.src = image.preview;
