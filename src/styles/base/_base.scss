@@ -31,4 +31,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  ::selection {
+    background: #2f3542;
+  }
 }

@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import uploadIcon from '../../../assets/icons/upload.svg';
 import classes from '../DragAndDrop/DragAndDrop.module.scss';
-// import Canvas from './Canvas/Canvas';
 import Dom from './Dom/Dom';
 const accept = {
   pointer: 'cursor',
@@ -18,12 +17,7 @@ const DragAndDrop = () => {
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
 
-  const {
-    getRootProps,
-    getInputProps,
-    isDragAccept,
-    isDragReject,
-  } = useDropzone({
+  const { getRootProps, getInputProps, isDragAccept, isDragReject } = useDropzone({
     accept: 'image/jpeg, image/png',
     multiple: false,
     // onDrop set state and mount the canvas component
