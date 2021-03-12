@@ -4,7 +4,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       <h3>
         Made with ❤️ by{' '}
-        <a href="https://github.com/losmarco/f-recipe" className={classes.borderLeftRight}>
+        <a href="https://github.com/losmarco/f-recipe" className={classes.border}>
           Marco
         </a>
       </h3>
