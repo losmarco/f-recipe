@@ -3,7 +3,7 @@
 
 .Dom {
   background-color: #fff;
-  position: absolute;
+  position: relative;
   width: 700px;
   height: 700px;
   @include respond(tab-land) {
@@ -49,28 +49,6 @@
     width: 90%;
     height: 48%;
     margin: 0 1em;
-  }
-}
-.Hidden {
-  position: absolute;
-  left: -9999px;
-  top: -9999px;
-
-  .ExportDom {
-    width: 1080px;
-    height: 1080px;
-    background-color: #fff;
-
-    .VerticalContent {
-      justify-content: space-around;
-      font-size: 2.8rem;
-      .RecipeGroup {
-        width: 36%;
-        div {
-          padding: 0.5rem 0;
-        }
-      }
-    }
   }
 }
 

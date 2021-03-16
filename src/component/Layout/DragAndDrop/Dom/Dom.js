@@ -60,14 +60,8 @@ const Dom = ({ photo }) => {
   );
   return (
     <>
-      {/* For display */}
-      <div className={classes.Dom}>{content}</div>
-
-      {/* For Export */}
-      <div className={classes.Hidden}>
-        <div ref={canvasRef} className={classes.ExportDom}>
-          {content}
-        </div>
+      <div ref={canvasRef} className={classes.Dom}>
+        {content}
       </div>
     </>
   );

@@ -3,6 +3,8 @@ import { useDropzone } from 'react-dropzone';
 import uploadIcon from '../../../assets/icons/upload.svg';
 import classes from '../DragAndDrop/DragAndDrop.module.scss';
 import Dom from './Dom/Dom';
+import Header from '../Header/Header';
+
 const accept = {
   pointer: 'cursor',
   backgroundColor: '#dfe6e9',
@@ -52,12 +54,16 @@ const DragAndDrop = () => {
   );
 
   const dragAndDrop = (
-    <div className={classes.DropZone} {...getRootProps({ style })}>
-      <input type="file" {...getInputProps()} />
-      <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
-      <h1>Image with Recipe</h1>
-      <h2>(Drag n Drop here)</h2>
-    </div>
+    <>
+      <Header />
+
+      <div className={classes.DropZone} {...getRootProps({ style })}>
+        <input type="file" {...getInputProps()} />
+        <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
+        <h1>Image with Recipe</h1>
+        <h2>(Drag n Drop here)</h2>
+      </div>
+    </>
   );
 
   return (

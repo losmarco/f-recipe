@@ -132,13 +132,30 @@ export const RecipeProvider = ({ children }) => {
     setrecipeControl(recipeControl + 1);
   };
   const exportRecipe = () => {
-    domtoimage.toPng(canvasRef.current).then(function (blob) {
-      let link = document.createElement('a');
-      link.download = 'frecipe-name';
-      link.href = blob;
-      link.click();
-      link.remove();
-    });
+    const node = canvasRef.current;
+    const wScale = 1080 / node.offsetWidth;
+    const hScale = 1080 / node.offsetHeight;
+    domtoimage
+      .toJpeg(node, {
+        height: node.offsetHeight * hScale,
+        width: node.offsetWidth * wScale,
+        style: {
+          transform: `scale(${wScale},${hScale})`,
+          transformOrigin: 'top left',
+          width: node.offsetWidth + 'px',
+          height: node.offsetHeight + 'px',
+        },
+      })
+      .then(function (blob) {
+        let link = document.createElement('a');
+        link.download = 'frecipe-name';
+        link.href = blob;
+        link.click();
+        link.remove();
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   return (
