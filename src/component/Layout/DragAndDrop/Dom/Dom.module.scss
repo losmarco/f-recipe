@@ -4,51 +4,36 @@
 .Dom {
   background-color: #fff;
   position: relative;
-  width: 700px;
-  height: 700px;
-  @include respond(tab-land) {
-    max-width: 600px;
-    max-height: 600px;
-  }
-
-  //750px
-  @media only screen and (max-height: 46.875em) {
-    max-width: 550px;
-    max-height: 550px;
-  }
-  //570px
-  @media only screen and (max-height: 35.625em) {
-    max-width: 480px;
-    max-height: 480px;
-  }
-  //500px
-  @media only screen and (max-height: 31.25em) {
-    max-width: 450px;
-    max-height: 450px;
-  }
+  width: 80vh;
+  height: 80vh;
 
   //1050px
   @media only screen and (max-width: 65.625em) {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 80vw;
+    max-height: 80vw;
   }
-
+  @media only screen and (max-height: 65.625em) {
+    max-width: 75vw;
+    max-height: 75vw;
+  }
+  @include respond(tab-land) {
+    max-width: 50vw;
+    max-height: 50vw;
+  }
+  @include respond(tab-port) {
+    max-width: 60vw;
+    max-height: 60vw;
+  }
   //950px
-  @media only screen and (max-width: 59.375em) {
-    max-width: 450px;
-    max-height: 450px;
-  }
-  //600px
+  // @media only screen and (max-width: 59.375em) {
+  //   max-width: 80vw;
+  //   max-height: 80vw;
+  // }
+
+  //0-432px
   @media only screen and (max-width: 37.5em) {
-    max-width: 400px;
-    max-height: 400px;
-    margin: 0 1em;
-  }
-  //0-432
-  @media only screen and (max-width: 27em) {
-    width: 90%;
-    height: 48%;
-    margin: 0 1em;
+    max-width: 90vw;
+    max-height: 90vw;
   }
 }
 
@@ -61,6 +46,7 @@
   align-items: center;
   font-size: 1.5rem;
   color: #6b7280;
+
   @media only screen and (max-width: 65.625em) {
     font-size: 1.3rem;
   }
