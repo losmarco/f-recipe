@@ -2,15 +2,9 @@ import { useState, useContext } from 'react';
 import Select from 'react-select';
 import classes from '../Select/Select.module.scss';
 import { RecipeContext } from '../../../../context/RecipeContext';
-import {
-  cameraModel,
-  filmSimulation,
-  grainEffectAndSize,
-  dynmaicRange,
-  colorChrome,
-} from '../../../../docs/data';
+import { cameraModel, filmSimulation, grainEffect, dynmaicRange, colorChrome } from '../../../../docs/data';
 
-const SelectInput = ({ label, options }) => {
+const SelectInput = ({ label, options, disabled }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const { updateRecipe } = useContext(RecipeContext);
   const renderSelectData = (options) => {
@@ -19,8 +13,8 @@ const SelectInput = ({ label, options }) => {
         return cameraModel;
       case 'filmSimulation':
         return filmSimulation;
-      case 'grainEffectAndSize':
-        return grainEffectAndSize;
+      case 'grainEffect':
+        return grainEffect;
       case 'dynmaicRange':
         return dynmaicRange;
       case 'colorChrome':
@@ -44,6 +38,7 @@ const SelectInput = ({ label, options }) => {
         <label>{label}</label>
       </div>
       <Select
+        isDisabled={disabled}
         maxMenuHeight={220}
         className={classes.Select}
         defaultValue={selectedOption}
@@ -56,6 +51,7 @@ const SelectInput = ({ label, options }) => {
             primary: '#404854',
             primary25: '#BABCC0',
             neutral0: '#EDF2F7',
+            neutral5: '#BABCC0',
           },
         })}
       />

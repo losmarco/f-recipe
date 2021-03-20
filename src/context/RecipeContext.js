@@ -17,17 +17,18 @@ export const RecipeProvider = ({ children }) => {
       checked: true,
     },
     {
-      nameID: 'grainEffectAndSize',
-      label: 'Grain Effect',
-      value: null,
-      checked: true,
-    },
-    {
       nameID: 'dynmaicRange',
       label: 'DR',
       value: null,
       checked: true,
     },
+    {
+      nameID: 'grainEffect',
+      label: 'Grain Effect',
+      value: null,
+      checked: true,
+    },
+
     {
       nameID: 'colorChrome',
       label: 'Color Chrome',

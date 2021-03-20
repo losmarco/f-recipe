@@ -6,12 +6,13 @@ import classes from '../RecipeControl/RecipeControl.module.scss';
 
 const RecipeControl = () => {
   const recipeInfo = [
-    { label: 'Camera Model', options: 'cameraModel' },
-    { label: 'Film Simulation', options: 'filmSimulation' },
-    { label: 'Grain Effect', options: 'grainEffectAndSize' },
-    { label: 'Dynmaic Range', options: 'dynmaicRange' },
-    { label: 'Color Chrome', options: 'colorChrome' },
-    { label: 'Color Chrome Blue', options: 'colorChromeBlue' },
+    { label: 'Camera Model', options: 'cameraModel', disabled: false },
+    { label: 'Film Simulation', options: 'filmSimulation', disabled: false },
+    { label: 'Dynmaic Range', options: 'dynmaicRange', disabled: false },
+    { label: 'Grain Effect', options: 'grainEffect', disabled: false, multiOptions: true },
+
+    { label: 'Color Chrome', options: 'colorChrome', disabled: false },
+    { label: 'Color Chrome Blue', options: 'colorChromeBlue', disabled: false },
   ];
 
   const recipeTone = [
@@ -26,9 +27,9 @@ const RecipeControl = () => {
   return (
     <div className={classes.ControlComponentLayout}>
       {/* Camera Info */}
-      {recipeInfo.map(({ label, options }) => (
+      {recipeInfo.map(({ label, options, disabled }) => (
         <div className={classes.ControlComponent} key={options}>
-          <Select label={label} options={options} />
+          <Select label={label} options={options} disabled={disabled} />
         </div>
       ))}
 
@@ -40,11 +41,7 @@ const RecipeControl = () => {
       ))}
       {/* White Balance */}
       <div className={classes.ControlComponent}>
-        <TextInput
-          label="White Balance"
-          name="whiteBalance"
-          placeholder="7100k, R:-4 B:-2"
-        />
+        <TextInput label="White Balance" name="whiteBalance" placeholder="7100k, R:-4 B:-2" />
       </div>
       {/* ISO */}
       <div className={classes.ControlComponent}>
@@ -52,11 +49,7 @@ const RecipeControl = () => {
       </div>
       {/* Exposure Compensation */}
       <div className={classes.FullWidthComponent}>
-        <Slider
-          label="Exposure compensation (1/3ev step)"
-          name="expoComp"
-          step={1 / 3}
-        />
+        <Slider label="Exposure compensation (1/3ev step)" name="expoComp" step={1 / 3} />
       </div>
       {/* Filter */}
       <div className={classes.FullWidthComponent}>

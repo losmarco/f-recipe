@@ -63,24 +63,10 @@ export const filmSimulation = [
 //Grain Effect
 export const grainEffect = [
   { value: 'off', label: 'Off' },
-  { value: 'weak', label: 'Weak' },
-  { value: 'strong', label: 'Strong' },
-];
-
-export const grainSize = [
-  { value: 'small', label: 'Small' },
-  { value: 'large', label: 'Large' },
-];
-
-export const grainEffectAndSize = [
-  {
-    label: 'Grain Effect',
-    options: grainEffect,
-  },
-  {
-    label: 'Grain Size',
-    options: grainSize,
-  },
+  { value: 'weak | small', label: 'Weak|Small' },
+  { value: 'weak | large', label: 'Weak|Large' },
+  { value: 'strong | small', label: 'Strong|Small' },
+  { value: 'strong | large', label: 'Strong|Large' },
 ];
 
 //Dynmaic Range
