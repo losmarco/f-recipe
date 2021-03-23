@@ -6,7 +6,7 @@ import classes from '../RecipeControl/RecipeControl.module.scss';
 
 const RecipeControl = () => {
   const recipeInfo = [
-    { label: 'Camera Model', options: 'cameraModel', disabled: false },
+    { label: 'Camera Model', options: 'cameraModel', disabled: true },
     { label: 'Film Simulation', options: 'filmSimulation', disabled: false },
     { label: 'Dynmaic Range', options: 'dynmaicRange', disabled: false },
     { label: 'Grain Effect', options: 'grainEffect', disabled: false, multiOptions: true },
@@ -16,12 +16,12 @@ const RecipeControl = () => {
   ];
 
   const recipeTone = [
-    { label: 'Noise Reduction', name: 'noiseReduction' },
-    { label: 'Hightlight', name: 'highlight' },
-    { label: 'Shadow', name: 'shadow' },
-    { label: 'Color', name: 'color' },
-    { label: 'Sharpness', name: 'sharpness' },
-    { label: 'Clarity', name: 'clarity' },
+    { label: 'Noise Reduction', name: 'noiseReduction', disabled: true },
+    { label: 'Hightlight', name: 'highlight', disabled: false },
+    { label: 'Shadow', name: 'shadow', disabled: false },
+    { label: 'Color', name: 'color', disabled: false },
+    { label: 'Sharpness', name: 'sharpness', disabled: false },
+    { label: 'Clarity', name: 'clarity', disabled: false },
   ];
 
   return (
@@ -34,9 +34,9 @@ const RecipeControl = () => {
       ))}
 
       {/* Camera Tone */}
-      {recipeTone.map(({ label, name }) => (
+      {recipeTone.map(({ label, name, disabled }) => (
         <div className={classes.ControlComponent} key={name}>
-          <Slider label={label} name={name} step={1} />
+          <Slider label={label} name={name} step={1} disabled={disabled} />
         </div>
       ))}
       {/* White Balance */}

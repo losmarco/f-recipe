@@ -11,3 +11,8 @@
 .SliderInput {
   width: 100%;
 }
+
+.IsDisabled {
+  pointer-events: none;
+  touch-action: none;
+}
