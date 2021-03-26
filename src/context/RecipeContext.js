@@ -8,98 +8,98 @@ export const RecipeProvider = ({ children }) => {
       nameID: 'cameraModel',
       label: 'Camera',
       value: null,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'filmSimulation',
       label: 'Film',
       value: null,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'dynmaicRange',
       label: 'DR',
       value: null,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'grainEffect',
       label: 'Grain Effect',
       value: null,
-      disabled: true,
+      disabled: false,
     },
 
     {
       nameID: 'colorChrome',
       label: 'Color Chrome',
       value: null,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'colorChromeBlue',
       label: 'Color Chrome Blue',
       value: null,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'noiseReduction',
       label: 'NR',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'highlight',
       label: 'Hightlight',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'shadow',
       label: 'Shadow',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'color',
       label: 'Color',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'sharpness',
       label: 'Sharpness',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'clarity',
       label: 'Clarity',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'whiteBalance',
       label: 'WB',
       value: '',
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'iso',
       label: 'ISO',
       value: '',
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'expoComp',
       label: 'EV',
       value: 0,
-      disabled: true,
+      disabled: false,
     },
     {
       nameID: 'filter',
       label: 'Filter',
       value: '',
-      disabled: true,
+      disabled: false,
     },
   ];
 
@@ -132,6 +132,7 @@ export const RecipeProvider = ({ children }) => {
     //dirty way to reset the UI
     setrecipeControl(recipeControl + 1);
   };
+  //EXPORT
   const exportRecipe = () => {
     const node = canvasRef.current;
     const wScale = 1080 / node.offsetWidth;
