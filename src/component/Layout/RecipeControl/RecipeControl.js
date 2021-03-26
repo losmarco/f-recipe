@@ -3,14 +3,13 @@ import { useContext } from 'react';
 import Select from '../RecipeControl/Select/Select';
 import Slider from '../RecipeControl/Slider/Slider';
 import TextInput from '../RecipeControl/TextInput/TextInput';
-import ButtonGroup from '../../Layout/RecipeControl/ButtonGroup/ButtonGroup';
+import Button from '../RecipeControl/Button/Button';
 import classes from '../RecipeControl/RecipeControl.module.scss';
 import { RecipeContext } from '../../../context/RecipeContext';
 
 const RecipeControl = () => {
-  const { state } = useContext(RecipeContext);
-  console.log(state);
-  //0-5
+  const { state, resetRecipe, exportRecipe } = useContext(RecipeContext);
+
   const recipeInfo = [
     { label: 'Camera Model', options: 'cameraModel', disabled: state[0].disabled },
     { label: 'Film Simulation', options: 'filmSimulation', disabled: state[1].disabled },
@@ -19,8 +18,7 @@ const RecipeControl = () => {
     { label: 'Color Chrome', options: 'colorChrome', disabled: state[4].disabled },
     { label: 'Color Chrome Blue', options: 'colorChromeBlue', disabled: state[5].disabled },
   ];
-  console.log(recipeInfo);
-  //6-11
+
   const recipeTone = [
     { label: 'Noise Reduction', name: 'noiseReduction', disabled: state[6].disabled },
     { label: 'Hightlight', name: 'highlight', disabled: state[7].disabled },
@@ -45,6 +43,7 @@ const RecipeControl = () => {
           <Slider label={label} name={name} step={1} disabled={disabled} />
         </div>
       ))}
+
       {/* White Balance */}
       <div className={classes.ControlComponent}>
         <TextInput
@@ -54,19 +53,31 @@ const RecipeControl = () => {
           disabled={state[12].disabled}
         />
       </div>
+
       {/* ISO */}
       <div className={classes.ControlComponent}>
         <TextInput label="ISO" name="iso" placeholder="Auto, up to iso 6400" disabled={state[13].disabled} />
       </div>
+
       {/* Exposure Compensation */}
       <div className={classes.FullWidthComponent}>
         <Slider label="Exposure compensation (1/3ev step)" name="expoComp" step={1 / 3} disabled={state[14].disabled} />
       </div>
+
       {/* Filter */}
       <div className={classes.FullWidthComponent}>
         <TextInput label="Filter" name="filter" placeholder=" " disabled={state[15].disabled} />
       </div>
-      <ButtonGroup />
+
+      {/*Reset and Export Button*/}
+      <div className={classes.ButtonGroup}>
+        <Button onClick={resetRecipe} disabled={true}>
+          Reset
+        </Button>
+        <Button onClick={exportRecipe} disabled={true}>
+          Export
+        </Button>
+      </div>
     </div>
   );
 };

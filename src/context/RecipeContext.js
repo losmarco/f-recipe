@@ -8,7 +8,7 @@ export const RecipeProvider = ({ children }) => {
       nameID: 'cameraModel',
       label: 'Camera',
       value: null,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'filmSimulation',
