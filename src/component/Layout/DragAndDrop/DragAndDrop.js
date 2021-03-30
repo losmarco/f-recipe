@@ -1,9 +1,10 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import { useDropzone } from 'react-dropzone';
 import uploadIcon from '../../../assets/icons/upload.svg';
 import classes from '../DragAndDrop/DragAndDrop.module.scss';
 import Dom from './Dom/Dom';
 import Header from '../Header/Header';
+import { RecipeContext } from '../../../context/RecipeContext';
 
 const accept = {
   pointer: 'cursor',
@@ -16,6 +17,7 @@ const reject = {
 };
 
 const DragAndDrop = () => {
+  const { toggleRecipe } = useContext(RecipeContext);
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
 
@@ -31,6 +33,9 @@ const DragAndDrop = () => {
           })
         )
       );
+      console.log('set global state to true');
+      // let nameID = 'cameraModal'
+      toggleRecipe('cameraModel');
     },
   });
 

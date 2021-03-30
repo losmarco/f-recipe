@@ -2,6 +2,7 @@ import { useState, createContext, useReducer } from 'react';
 import recipeReducer from './RecipeReducer';
 import { UPDATE_RECIPE, TOGGLE_RECIPE, RESET_RECIPE } from './RecipeActions';
 import domtoimage from 'dom-to-image';
+
 export const RecipeProvider = ({ children }) => {
   const initState = [
     {
@@ -14,92 +15,92 @@ export const RecipeProvider = ({ children }) => {
       nameID: 'filmSimulation',
       label: 'Film',
       value: null,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'dynmaicRange',
       label: 'DR',
       value: null,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'grainEffect',
       label: 'Grain Effect',
       value: null,
-      disabled: false,
+      disabled: true,
     },
 
     {
       nameID: 'colorChrome',
       label: 'Color Chrome',
       value: null,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'colorChromeBlue',
       label: 'Color Chrome Blue',
       value: null,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'noiseReduction',
       label: 'NR',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'highlight',
       label: 'Hightlight',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'shadow',
       label: 'Shadow',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'color',
       label: 'Color',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'sharpness',
       label: 'Sharpness',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'clarity',
       label: 'Clarity',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'whiteBalance',
       label: 'WB',
       value: '',
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'iso',
       label: 'ISO',
       value: '',
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'expoComp',
       label: 'EV',
       value: 0,
-      disabled: false,
+      disabled: true,
     },
     {
       nameID: 'filter',
       label: 'Filter',
       value: '',
-      disabled: false,
+      disabled: true,
     },
   ];
 
@@ -116,11 +117,14 @@ export const RecipeProvider = ({ children }) => {
       },
     });
   };
-  //TOGGLE
-  const toggleRecipe = (nameID) => {
+  //TOGGLE for checking disabled enable
+  const toggleRecipe = (name, disabled) => {
     dispatch({
       type: TOGGLE_RECIPE,
-      payload: nameID,
+      payload: {
+        currentNameID: name,
+        disabled: disabled,
+      },
     });
   };
   //RESET
