@@ -33,8 +33,7 @@ const DragAndDrop = () => {
           })
         )
       );
-      console.log('set global state to true');
-      // let nameID = 'cameraModal'
+      //Set the camera model disable to false
       toggleRecipe('cameraModel');
     },
   });

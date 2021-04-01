@@ -2,10 +2,11 @@ import { useContext } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../Slider/Slider.module.scss';
+import Checkbox from '../Checkbox/Checkbox';
 import { RecipeContext } from '../../../../context/RecipeContext';
 import { noiseReduction, highlight, shadow, color, sharpness, clarity, expoComp } from '../../../../docs/data';
 
-const SliderInput = ({ label, name, step, disabled }) => {
+const SliderInput = ({ label, name, step, disabled, checkbox }) => {
   const { updateRecipe } = useContext(RecipeContext);
   const renderMinMaxData = (name) => {
     switch (name) {
@@ -30,11 +31,15 @@ const SliderInput = ({ label, name, step, disabled }) => {
 
   return (
     <>
-      <div className={classes.SliderLabel}>
-        <label>{label}</label>
+      <div className={classes.SliderTitle}>
+        <div className={classes.SliderLabel}>
+          <label>{label}</label>
+        </div>
+        {checkbox ? <Checkbox elementID={label} /> : null}
       </div>
+
       <Slider
-        className={(classes.SliderInput, disabled ? classes.IsDisabled : '')}
+        className={(classes.SliderInput, disabled ? classes.IsDisabled : null)}
         min={renderMinMaxData(name).min}
         max={renderMinMaxData(name).max}
         defaultValue={0}

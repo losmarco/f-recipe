@@ -1,0 +1,39 @@
+input[type='checkbox'] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.CustomCheckbox {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.CustomCheckbox {
+  content: '';
+  border-radius: 2px;
+  border: 1px solid #edf2f7;
+  display: inline-block;
+  vertical-align: middle;
+  width: 8px;
+  height: 8px;
+  padding: 2px;
+  text-align: center;
+  transition: 250ms ease-in-out;
+}
+
+.Checkbox:checked + .CustomCheckbox:before {
+  content: '';
+  position: relative;
+  display: block;
+  left: 2px;
+  top: -2px;
+  width: 3px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: 250ms ease-in-out;
+}

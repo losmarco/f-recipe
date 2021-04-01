@@ -14,9 +14,9 @@ const RecipeControl = () => {
     { label: 'Camera Model', options: 'cameraModel', disabled: state[0].disabled },
     { label: 'Film Simulation', options: 'filmSimulation', disabled: state[1].disabled },
     { label: 'Dynmaic Range', options: 'dynmaicRange', disabled: state[2].disabled },
-    { label: 'Grain Effect', options: 'grainEffect', disabled: state[3].disabled, multiOptions: true },
-    { label: 'Color Chrome', options: 'colorChrome', disabled: state[4].disabled },
-    { label: 'Color Chrome Blue', options: 'colorChromeBlue', disabled: state[5].disabled },
+    { label: 'Grain Effect', options: 'grainEffect', disabled: state[3].disabled },
+    { label: 'Color Chrome', options: 'colorChrome', disabled: state[4].disabled, checkbox: true },
+    { label: 'Color Chrome Blue', options: 'colorChromeBlue', disabled: state[5].disabled, checkbox: true },
   ];
 
   const recipeTone = [
@@ -24,23 +24,23 @@ const RecipeControl = () => {
     { label: 'Hightlight', name: 'highlight', disabled: state[7].disabled },
     { label: 'Shadow', name: 'shadow', disabled: state[8].disabled },
     { label: 'Color', name: 'color', disabled: state[9].disabled },
-    { label: 'Sharpness', name: 'sharpness', disabled: state[10].disabled },
-    { label: 'Clarity', name: 'clarity', disabled: state[11].disabled },
+    { label: 'Sharpness', name: 'sharpness', disabled: state[10].disabled, checkbox: true },
+    { label: 'Clarity', name: 'clarity', disabled: state[11].disabled, checkbox: true },
   ];
 
   return (
     <div className={classes.ControlComponentLayout}>
       {/* Camera Info */}
-      {recipeInfo.map(({ label, options, disabled }) => (
+      {recipeInfo.map(({ label, options, disabled, checkbox }) => (
         <div className={classes.ControlComponent} key={options}>
-          <Select label={label} options={options} disabled={disabled} />
+          <Select label={label} options={options} disabled={disabled} checkbox={checkbox} />
         </div>
       ))}
 
       {/* Camera Tone */}
-      {recipeTone.map(({ label, name, disabled }) => (
+      {recipeTone.map(({ label, name, disabled, checkbox }) => (
         <div className={classes.ControlComponent} key={name}>
-          <Slider label={label} name={name} step={1} disabled={disabled} />
+          <Slider label={label} name={name} step={1} disabled={disabled} checkbox={checkbox} />
         </div>
       ))}
 
@@ -71,10 +71,10 @@ const RecipeControl = () => {
 
       {/*Reset and Export Button*/}
       <div className={classes.ButtonGroup}>
-        <Button onClick={resetRecipe} disabled={true}>
+        <Button onClick={resetRecipe} disabled={false}>
           Reset
         </Button>
-        <Button onClick={exportRecipe} disabled={true}>
+        <Button onClick={exportRecipe} disabled={false}>
           Export
         </Button>
       </div>

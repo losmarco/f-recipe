@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react';
 import Select from 'react-select';
 import classes from '../Select/Select.module.scss';
+import Checkbox from '../Checkbox/Checkbox';
 import { RecipeContext } from '../../../../context/RecipeContext';
 import { cameraModel, filmSimulation, grainEffect, dynmaicRange, colorChrome } from '../../../../docs/data';
 
-const SelectInput = ({ label, options, disabled }) => {
+const SelectInput = ({ label, options, disabled, checkbox }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const { updateRecipe } = useContext(RecipeContext);
   const renderSelectData = (options) => {
@@ -34,9 +35,13 @@ const SelectInput = ({ label, options, disabled }) => {
 
   return (
     <>
-      <div className={classes.Label}>
-        <label>{label}</label>
+      <div className={classes.SelectTitle}>
+        <div className={classes.Label}>
+          <label>{label}</label>
+        </div>
+        {checkbox ? <Checkbox elementID={label} /> : null}
       </div>
+
       <Select
         isDisabled={disabled}
         maxMenuHeight={220}
