@@ -7,6 +7,7 @@ import { cameraModel, filmSimulation, grainEffect, dynmaicRange, colorChrome } f
 
 const SelectInput = ({ label, options, disabled, checkbox }) => {
   const [selectedOption, setSelectedOption] = useState(null);
+
   const { updateRecipe } = useContext(RecipeContext);
   const renderSelectData = (options) => {
     switch (options) {
@@ -39,7 +40,7 @@ const SelectInput = ({ label, options, disabled, checkbox }) => {
         <div className={classes.Label}>
           <label>{label}</label>
         </div>
-        {checkbox ? <Checkbox elementID={label} /> : null}
+        {checkbox ? <Checkbox elementID={label} name={options} /> : null}
       </div>
 
       <Select

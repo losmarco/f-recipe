@@ -35,7 +35,7 @@ const SliderInput = ({ label, name, step, disabled, checkbox }) => {
         <div className={classes.SliderLabel}>
           <label>{label}</label>
         </div>
-        {checkbox ? <Checkbox elementID={label} /> : null}
+        {checkbox ? <Checkbox elementID={label} name={name} /> : null}
       </div>
 
       <Slider
