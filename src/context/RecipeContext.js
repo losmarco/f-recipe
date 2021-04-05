@@ -1,6 +1,6 @@
 import { useState, createContext, useReducer } from 'react';
 import recipeReducer from './RecipeReducer';
-import { UPDATE_RECIPE, TOGGLE_RECIPE, RESET_RECIPE } from './RecipeActions';
+import { UPDATE_RECIPE, TOGGLE_RECIPE, TOGGLE_CHECKBOX_RECIPE, RESET_RECIPE } from './RecipeActions';
 import domtoimage from 'dom-to-image';
 
 export const RecipeProvider = ({ children }) => {
@@ -35,12 +35,14 @@ export const RecipeProvider = ({ children }) => {
       label: 'Color Chrome',
       value: null,
       disabled: true,
+      checkbox: true,
     },
     {
       nameID: 'colorChromeBlue',
       label: 'Color Chrome Blue',
       value: null,
       disabled: true,
+      checkbox: true,
     },
     {
       nameID: 'noiseReduction',
@@ -127,6 +129,16 @@ export const RecipeProvider = ({ children }) => {
       },
     });
   };
+  //Toggle Checkbox
+  const toggleCheckbox = (name, checkbox) => {
+    dispatch({
+      type: TOGGLE_CHECKBOX_RECIPE,
+      payload: {
+        currentNameID: name,
+        checkbox: checkbox,
+      },
+    });
+  };
   //RESET
   const resetRecipe = () => {
     dispatch({
@@ -171,6 +183,7 @@ export const RecipeProvider = ({ children }) => {
         state,
         updateRecipe,
         toggleRecipe,
+        toggleCheckbox,
         resetRecipe,
         exportRecipe,
         setCanvasRef,

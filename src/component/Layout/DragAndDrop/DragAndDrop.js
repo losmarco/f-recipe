@@ -17,7 +17,7 @@ const reject = {
 };
 
 const DragAndDrop = () => {
-  const { toggleRecipe } = useContext(RecipeContext);
+  const { toggleRecipe, toggleCheckbox } = useContext(RecipeContext);
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
 
@@ -33,8 +33,30 @@ const DragAndDrop = () => {
           })
         )
       );
-      //Set the camera model disable to false
-      toggleRecipe('cameraModel');
+      //Set the control component disabled to false
+      const recipeList = [
+        'cameraModel',
+        'filmSimulation',
+        'dynmaicRange',
+        'grainEffect',
+        'colorChrome',
+        'colorChromeBlue',
+        'noiseReduction',
+        'highlight',
+        'shadow',
+        'color',
+        'sharpness',
+        'clarity',
+        'whiteBalance',
+        'iso',
+        'expoComp',
+        'filter',
+      ];
+      recipeList.map((i) => {
+        toggleRecipe(i);
+        toggleCheckbox(i);
+        return null;
+      });
     },
   });
 

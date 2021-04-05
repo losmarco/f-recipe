@@ -40,7 +40,7 @@ const SelectInput = ({ label, options, disabled, checkbox }) => {
         <div className={classes.Label}>
           <label>{label}</label>
         </div>
-        {checkbox ? <Checkbox elementID={label} name={options} /> : null}
+        {checkbox ? <Checkbox elementID={label} name={options} isDisabled={disabled} /> : null}
       </div>
 
       <Select
