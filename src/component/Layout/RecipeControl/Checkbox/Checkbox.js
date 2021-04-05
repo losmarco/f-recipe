@@ -7,7 +7,7 @@ const Checkbox = ({ elementID, name }) => {
   const updateState = () => {
     toggleRecipe(name);
   };
-  console.log(state[4].checkbox);
+
   let isDisabled = state[4].checkbox;
   return (
     <>

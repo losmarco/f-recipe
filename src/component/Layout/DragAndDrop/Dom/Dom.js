@@ -25,7 +25,7 @@ const Dom = ({ photo }) => {
     }
   };
   img.src = image.preview;
-
+  console.log(state);
   //Uploaded Image and Recipe
   const content = (
     <div className={isHorizontal ? classes.HorizontalContent : classes.VerticalContent}>
@@ -36,23 +36,26 @@ const Dom = ({ photo }) => {
       {/* Display the Recipe */}
       <div className={classes.RecipeGroup}>
         {state.map((e) => {
-          if (e.label === 'EV') {
-            //Fraction for exposure compensation
-            let frac = new Fraction(e.value).toFraction(true);
-            let num = frac.split(' ');
+          if (e.disabled === false) {
+            if (e.label === 'EV') {
+              //Fraction for exposure compensation
+              let frac = new Fraction(e.value).toFraction(true);
+              let num = frac.split(' ');
 
-            return (
-              <div className={classes.RecipeText} key={e.nameID}>
-                {e.label}: {num[0]}
-                <span className={classes.RecipeTextFraction}>{num[1]}</span>
-              </div>
-            );
-          } else {
+              return (
+                <div className={classes.RecipeText} key={e.nameID}>
+                  {e.label}: {num[0]}
+                  <span className={classes.RecipeTextFraction}>{num[1]}</span>
+                </div>
+              );
+            }
             return (
               <div className={classes.RecipeText} key={e.nameID}>
                 {e.label}: {e.value}
               </div>
             );
+          } else {
+            return null;
           }
         })}
       </div>
