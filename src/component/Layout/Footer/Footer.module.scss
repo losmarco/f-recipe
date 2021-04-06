@@ -1,8 +1,13 @@
+@import './src/styles/abstracts/mixins';
 .footer {
   position: fixed;
   bottom: 0;
   padding-bottom: 1em;
   text-align: center;
+
+  @include respond(tab-port) {
+    visibility: hidden;
+  }
   h3 {
     font-size: 1.6rem;
     font-weight: 400;

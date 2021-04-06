@@ -30,6 +30,12 @@
       padding: 2.5em 0;
     }
   }
+
+  .ButtonGroup {
+    display: flex;
+    justify-content: space-evenly;
+    width: 85%;
+  }
 }
 // 0 - 600px:      Phone
 // 600 - 900px:    Tablet portrait

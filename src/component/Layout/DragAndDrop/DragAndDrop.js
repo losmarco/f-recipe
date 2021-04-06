@@ -1,8 +1,11 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useContext } from 'react';
 import { useDropzone } from 'react-dropzone';
 import uploadIcon from '../../../assets/icons/upload.svg';
 import classes from '../DragAndDrop/DragAndDrop.module.scss';
 import Dom from './Dom/Dom';
+import Header from '../Header/Header';
+import { RecipeContext } from '../../../context/RecipeContext';
+
 const accept = {
   pointer: 'cursor',
   backgroundColor: '#dfe6e9',
@@ -14,6 +17,7 @@ const reject = {
 };
 
 const DragAndDrop = () => {
+  const { toggleRecipe, toggleState } = useContext(RecipeContext);
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
 
@@ -29,6 +33,30 @@ const DragAndDrop = () => {
           })
         )
       );
+      //Set the control component disabled to false
+      const recipeList = [
+        'cameraModel',
+        'filmSimulation',
+        'dynmaicRange',
+        'grainEffect',
+        'colorChrome',
+        'colorChromeBlue',
+        'noiseReduction',
+        'highlight',
+        'shadow',
+        'color',
+        'sharpness',
+        'clarity',
+        'whiteBalance',
+        'iso',
+        'expoComp',
+        'filter',
+      ];
+      recipeList.map((i) => {
+        toggleRecipe(i);
+        return null;
+      });
+      toggleState(false);
     },
   });
 
@@ -52,12 +80,16 @@ const DragAndDrop = () => {
   );
 
   const dragAndDrop = (
-    <div className={classes.DropZone} {...getRootProps({ style })}>
-      <input type="file" {...getInputProps()} />
-      <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
-      <h1>Image with Recipe</h1>
-      <h2>(Drag n Drop here)</h2>
-    </div>
+    <>
+      <Header />
+
+      <div className={classes.DropZone} {...getRootProps({ style })}>
+        <input type="file" {...getInputProps()} />
+        <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
+        <h1>Image with Recipe</h1>
+        <h2>(Drag n Drop here)</h2>
+      </div>
+    </>
   );
 
   return (

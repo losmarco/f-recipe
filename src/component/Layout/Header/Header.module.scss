@@ -1,17 +1,29 @@
+@import './src/styles/abstracts/mixins';
 .header {
   text-align: center;
+
   h1 {
     font-size: 6rem;
     font-weight: 700;
     font-style: italic;
     color: #34495e;
-    padding-bottom: 0.3em;
+    margin-bottom: 0.3em;
+    @include respond(tab-port) {
+      font-size: 4.6rem;
+      padding: 0;
+    }
   }
   p {
     font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 0.08rem;
     color: #2d3748;
+    @include respond(tab-port) {
+      font-size: 1.4rem;
+    }
   }
-  padding-bottom: 4em;
+  margin-bottom: 4em;
+  @include respond(tab-port) {
+    margin-bottom: 1.6em;
+  }
 }

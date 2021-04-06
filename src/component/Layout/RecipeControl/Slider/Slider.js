@@ -2,18 +2,11 @@ import { useContext } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import classes from '../Slider/Slider.module.scss';
+import Checkbox from '../Checkbox/Checkbox';
 import { RecipeContext } from '../../../../context/RecipeContext';
-import {
-  noiseReduction,
-  highlight,
-  shadow,
-  color,
-  sharpness,
-  clarity,
-  expoComp,
-} from '../../../../docs/data';
+import { noiseReduction, highlight, shadow, color, sharpness, clarity, expoComp } from '../../../../docs/data';
 
-const SliderInput = ({ label, name, step }) => {
+const SliderInput = ({ label, name, step, disabled, checkbox }) => {
   const { updateRecipe } = useContext(RecipeContext);
   const renderMinMaxData = (name) => {
     switch (name) {
@@ -38,11 +31,15 @@ const SliderInput = ({ label, name, step }) => {
 
   return (
     <>
-      <div className={classes.SliderLabel}>
-        <label>{label}</label>
+      <div className={classes.SliderTitle}>
+        <div className={classes.SliderLabel}>
+          <label>{label}</label>
+        </div>
+        {checkbox ? <Checkbox elementID={label} name={name} /> : null}
       </div>
+
       <Slider
-        className={classes.SliderInput}
+        className={(classes.SliderInput, disabled ? classes.IsDisabled : null)}
         min={renderMinMaxData(name).min}
         max={renderMinMaxData(name).max}
         defaultValue={0}
@@ -50,17 +47,14 @@ const SliderInput = ({ label, name, step }) => {
         onChange={(value) => updateRecipe(name, value)}
         startPoint={0}
         marks={renderMinMaxData(name).marks}
-        railStyle={{ backgroundColor: '#EDF2F7' }}
+        railStyle={{ backgroundColor: disabled ? '#C9C9C9' : '#EDF2F7' }}
         trackStyle={[{ backgroundColor: '#6B7280' }]}
         handleStyle={{
-          borderColor: '#eee',
-          backgroundColor: '#232F3E',
+          borderColor: disabled ? '#9E9E9E' : '#eee',
+          backgroundColor: disabled ? '#9E9E9E' : '#232F3E',
         }}
         dotStyle={{
           display: 'none',
-        }}
-        activeDotStyle={{
-          border: 'red',
         }}
       />
     </>

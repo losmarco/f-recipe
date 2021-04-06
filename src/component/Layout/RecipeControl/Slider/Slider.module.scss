@@ -1,13 +1,23 @@
-.SliderLabel {
-  margin-bottom: 0.3em;
+.SliderTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .SliderLabel {
+    margin-bottom: 0.3em;
 
-  label {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #cbd5e0;
+    label {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #cbd5e0;
+    }
   }
 }
 
 .SliderInput {
   width: 100%;
+}
+
+.IsDisabled {
+  pointer-events: none;
+  touch-action: none;
 }

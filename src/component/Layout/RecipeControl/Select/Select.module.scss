@@ -1,10 +1,15 @@
-.Label {
-  margin-bottom: 0.3rem;
+.SelectTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .Label {
+    margin-bottom: 0.3rem;
 
-  label {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #cbd5e0;
+    label {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #cbd5e0;
+    }
   }
 }
 

@@ -1,106 +1,112 @@
 import { useState, createContext, useReducer } from 'react';
 import recipeReducer from './RecipeReducer';
-import { UPDATE_RECIPE, TOGGLE_RECIPE, RESET_RECIPE } from './RecipeActions';
+import { UPDATE_RECIPE, TOGGLE_RECIPE, TOGGLE_RECIPE_STATE, DISCARD_RECIPE } from './RecipeActions';
 import domtoimage from 'dom-to-image';
+
 export const RecipeProvider = ({ children }) => {
-  const initState = [
-    {
-      nameID: 'cameraModel',
-      label: 'Camera',
-      value: null,
-      checked: true,
-    },
-    {
-      nameID: 'filmSimulation',
-      label: 'Film',
-      value: null,
-      checked: true,
-    },
-    {
-      nameID: 'grainEffectAndSize',
-      label: 'Grain Effect',
-      value: null,
-      checked: true,
-    },
-    {
-      nameID: 'dynmaicRange',
-      label: 'DR',
-      value: null,
-      checked: true,
-    },
-    {
-      nameID: 'colorChrome',
-      label: 'Color Chrome',
-      value: null,
-      checked: true,
-    },
-    {
-      nameID: 'colorChromeBlue',
-      label: 'Color Chrome Blue',
-      value: null,
-      checked: true,
-    },
-    {
-      nameID: 'noiseReduction',
-      label: 'NR',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'highlight',
-      label: 'Hightlight',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'shadow',
-      label: 'Shadow',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'color',
-      label: 'Color',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'sharpness',
-      label: 'Sharpness',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'clarity',
-      label: 'Clarity',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'whiteBalance',
-      label: 'WB',
-      value: '',
-      checked: true,
-    },
-    {
-      nameID: 'iso',
-      label: 'ISO',
-      value: '',
-      checked: true,
-    },
-    {
-      nameID: 'expoComp',
-      label: 'EV',
-      value: 0,
-      checked: true,
-    },
-    {
-      nameID: 'filter',
-      label: 'Filter',
-      value: '',
-      checked: true,
-    },
-  ];
+  const initState = {
+    recipe: [
+      {
+        nameID: 'cameraModel',
+        label: 'Camera',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'filmSimulation',
+        label: 'Film',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'dynmaicRange',
+        label: 'DR',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'grainEffect',
+        label: 'Grain Effect',
+        value: null,
+        disabled: true,
+      },
+
+      {
+        nameID: 'colorChrome',
+        label: 'Color Chrome',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'colorChromeBlue',
+        label: 'Color Chrome Blue',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'noiseReduction',
+        label: 'NR',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'highlight',
+        label: 'Hightlight',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'shadow',
+        label: 'Shadow',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'color',
+        label: 'Color',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'sharpness',
+        label: 'Sharpness',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'clarity',
+        label: 'Clarity',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'whiteBalance',
+        label: 'WB',
+        value: '',
+        disabled: true,
+      },
+      {
+        nameID: 'iso',
+        label: 'ISO',
+        value: '',
+        disabled: true,
+      },
+      {
+        nameID: 'expoComp',
+        label: 'EV',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'filter',
+        label: 'Filter',
+        value: '',
+        disabled: true,
+      },
+    ],
+    checkbox: true,
+    button: true,
+  };
 
   const [state, dispatch] = useReducer(recipeReducer, initState);
   const [recipeControl, setrecipeControl] = useState(0);
@@ -115,30 +121,57 @@ export const RecipeProvider = ({ children }) => {
       },
     });
   };
-  //TOGGLE
-  const toggleRecipe = (nameID) => {
+  //TOGGLE for checking disabled enable
+  const toggleRecipe = (name, disabled) => {
     dispatch({
       type: TOGGLE_RECIPE,
-      payload: nameID,
+      payload: {
+        currentNameID: name,
+        disabled: disabled,
+      },
     });
   };
-  //RESET
-  const resetRecipe = () => {
+  //Toggle Checkbox
+  const toggleState = () => {
     dispatch({
-      type: RESET_RECIPE,
+      type: TOGGLE_RECIPE_STATE,
+    });
+  };
+  //Discard
+  const discardRecipe = () => {
+    dispatch({
+      type: DISCARD_RECIPE,
       payload: initState,
     });
     //dirty way to reset the UI
     setrecipeControl(recipeControl + 1);
   };
+  //EXPORT
   const exportRecipe = () => {
-    domtoimage.toPng(canvasRef.current).then(function (blob) {
-      let link = document.createElement('a');
-      link.download = 'frecipe-name';
-      link.href = blob;
-      link.click();
-      link.remove();
-    });
+    const node = canvasRef.current;
+    const wScale = 1080 / node.offsetWidth;
+    const hScale = 1080 / node.offsetHeight;
+    domtoimage
+      .toJpeg(node, {
+        height: node.offsetHeight * hScale,
+        width: node.offsetWidth * wScale,
+        style: {
+          transform: `scale(${wScale},${hScale})`,
+          transformOrigin: 'top left',
+          width: node.offsetWidth + 'px',
+          height: node.offsetHeight + 'px',
+        },
+      })
+      .then(function (blob) {
+        let link = document.createElement('a');
+        link.download = 'frecipe-name';
+        link.href = blob;
+        link.click();
+        link.remove();
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   return (
@@ -148,7 +181,8 @@ export const RecipeProvider = ({ children }) => {
         state,
         updateRecipe,
         toggleRecipe,
-        resetRecipe,
+        toggleState,
+        discardRecipe,
         exportRecipe,
         setCanvasRef,
       }}

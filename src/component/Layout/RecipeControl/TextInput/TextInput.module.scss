@@ -8,7 +8,7 @@
   }
 }
 
-.InputBox {
+.InputBoxActive {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -28,5 +28,29 @@
     color: #333333;
     padding: 2px 8px;
     caret-color: #333333;
+    outline: none;
+  }
+}
+
+.InputBoxDisabled {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  min-height: 38px;
+  width: 100%;
+  border-radius: 4px;
+  pointer-events: none;
+  touch-action: none;
+
+  input {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    background-color: #babcc0;
+    border: none;
+    border-width: 1px;
+    font-size: 1.2rem;
+    color: #525252;
+    padding: 2px 8px;
   }
 }
