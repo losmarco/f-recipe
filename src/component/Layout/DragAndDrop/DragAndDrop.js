@@ -17,7 +17,7 @@ const reject = {
 };
 
 const DragAndDrop = () => {
-  const { toggleRecipe, toggleCheckbox } = useContext(RecipeContext);
+  const { toggleRecipe, toggleState } = useContext(RecipeContext);
   const [image, setImage] = useState([]);
   const [display, setDisplay] = useState(true);
 
@@ -54,9 +54,9 @@ const DragAndDrop = () => {
       ];
       recipeList.map((i) => {
         toggleRecipe(i);
-        toggleCheckbox(i);
         return null;
       });
+      toggleState(false);
     },
   });
 

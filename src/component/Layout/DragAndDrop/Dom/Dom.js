@@ -25,7 +25,7 @@ const Dom = ({ photo }) => {
     }
   };
   img.src = image.preview;
-  console.log(state);
+
   //Uploaded Image and Recipe
   const content = (
     <div className={isHorizontal ? classes.HorizontalContent : classes.VerticalContent}>
@@ -35,7 +35,7 @@ const Dom = ({ photo }) => {
 
       {/* Display the Recipe */}
       <div className={classes.RecipeGroup}>
-        {state.map((e) => {
+        {state.recipe.map((e) => {
           if (e.disabled === false) {
             if (e.label === 'EV') {
               //Fraction for exposure compensation

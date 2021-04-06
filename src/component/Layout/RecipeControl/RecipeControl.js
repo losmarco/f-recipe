@@ -8,24 +8,25 @@ import classes from '../RecipeControl/RecipeControl.module.scss';
 import { RecipeContext } from '../../../context/RecipeContext';
 
 const RecipeControl = () => {
-  const { state, resetRecipe, exportRecipe } = useContext(RecipeContext);
-
+  const { state, discardRecipe, exportRecipe } = useContext(RecipeContext);
+  const recipe = state.recipe;
+  const buttonDisabled = state.button;
   const recipeInfo = [
-    { label: 'Camera Model', options: 'cameraModel', disabled: state[0].disabled },
-    { label: 'Film Simulation', options: 'filmSimulation', disabled: state[1].disabled },
-    { label: 'Dynmaic Range', options: 'dynmaicRange', disabled: state[2].disabled },
-    { label: 'Grain Effect', options: 'grainEffect', disabled: state[3].disabled },
-    { label: 'Color Chrome', options: 'colorChrome', disabled: state[4].disabled, checkbox: true },
-    { label: 'Color Chrome Blue', options: 'colorChromeBlue', disabled: state[5].disabled, checkbox: true },
+    { label: 'Camera Model', options: 'cameraModel', disabled: recipe[0].disabled },
+    { label: 'Film Simulation', options: 'filmSimulation', disabled: recipe[1].disabled },
+    { label: 'Dynmaic Range', options: 'dynmaicRange', disabled: recipe[2].disabled },
+    { label: 'Grain Effect', options: 'grainEffect', disabled: recipe[3].disabled },
+    { label: 'Color Chrome', options: 'colorChrome', disabled: recipe[4].disabled, checkbox: true },
+    { label: 'Color Chrome Blue', options: 'colorChromeBlue', disabled: recipe[5].disabled, checkbox: true },
   ];
 
   const recipeTone = [
-    { label: 'Noise Reduction', name: 'noiseReduction', disabled: state[6].disabled },
-    { label: 'Hightlight', name: 'highlight', disabled: state[7].disabled },
-    { label: 'Shadow', name: 'shadow', disabled: state[8].disabled },
-    { label: 'Color', name: 'color', disabled: state[9].disabled },
-    { label: 'Sharpness', name: 'sharpness', disabled: state[10].disabled, checkbox: true },
-    { label: 'Clarity', name: 'clarity', disabled: state[11].disabled, checkbox: true },
+    { label: 'Noise Reduction', name: 'noiseReduction', disabled: recipe[6].disabled },
+    { label: 'Hightlight', name: 'highlight', disabled: recipe[7].disabled },
+    { label: 'Shadow', name: 'shadow', disabled: recipe[8].disabled },
+    { label: 'Color', name: 'color', disabled: recipe[9].disabled },
+    { label: 'Sharpness', name: 'sharpness', disabled: recipe[10].disabled, checkbox: true },
+    { label: 'Clarity', name: 'clarity', disabled: recipe[11].disabled, checkbox: true },
   ];
 
   return (
@@ -50,31 +51,36 @@ const RecipeControl = () => {
           label="White Balance"
           name="whiteBalance"
           placeholder="7100k, R:-4 B:-2"
-          disabled={state[12].disabled}
+          disabled={recipe[12].disabled}
         />
       </div>
 
       {/* ISO */}
       <div className={classes.ControlComponent}>
-        <TextInput label="ISO" name="iso" placeholder="Auto, up to iso 6400" disabled={state[13].disabled} />
+        <TextInput label="ISO" name="iso" placeholder="Auto, up to iso 6400" disabled={recipe[13].disabled} />
       </div>
 
       {/* Exposure Compensation */}
       <div className={classes.FullWidthComponent}>
-        <Slider label="Exposure compensation (1/3ev step)" name="expoComp" step={1 / 3} disabled={state[14].disabled} />
+        <Slider
+          label="Exposure compensation (1/3ev step)"
+          name="expoComp"
+          step={1 / 3}
+          disabled={recipe[14].disabled}
+        />
       </div>
 
       {/* Filter */}
       <div className={classes.FullWidthComponent}>
-        <TextInput label="Filter" name="filter" placeholder=" " disabled={state[15].disabled} />
+        <TextInput label="Filter" name="filter" placeholder=" " disabled={recipe[15].disabled} />
       </div>
 
       {/*Reset and Export Button*/}
       <div className={classes.ButtonGroup}>
-        <Button onClick={resetRecipe} disabled={false}>
+        <Button onClick={discardRecipe} disabled={buttonDisabled}>
           Reset
         </Button>
-        <Button onClick={exportRecipe} disabled={false}>
+        <Button onClick={exportRecipe} disabled={buttonDisabled}>
           Export
         </Button>
       </div>

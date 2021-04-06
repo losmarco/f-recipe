@@ -1,110 +1,112 @@
 import { useState, createContext, useReducer } from 'react';
 import recipeReducer from './RecipeReducer';
-import { UPDATE_RECIPE, TOGGLE_RECIPE, TOGGLE_CHECKBOX_RECIPE, RESET_RECIPE } from './RecipeActions';
+import { UPDATE_RECIPE, TOGGLE_RECIPE, TOGGLE_RECIPE_STATE, DISCARD_RECIPE } from './RecipeActions';
 import domtoimage from 'dom-to-image';
 
 export const RecipeProvider = ({ children }) => {
-  const initState = [
-    {
-      nameID: 'cameraModel',
-      label: 'Camera',
-      value: null,
-      disabled: true,
-    },
-    {
-      nameID: 'filmSimulation',
-      label: 'Film',
-      value: null,
-      disabled: true,
-    },
-    {
-      nameID: 'dynmaicRange',
-      label: 'DR',
-      value: null,
-      disabled: true,
-    },
-    {
-      nameID: 'grainEffect',
-      label: 'Grain Effect',
-      value: null,
-      disabled: true,
-    },
+  const initState = {
+    recipe: [
+      {
+        nameID: 'cameraModel',
+        label: 'Camera',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'filmSimulation',
+        label: 'Film',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'dynmaicRange',
+        label: 'DR',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'grainEffect',
+        label: 'Grain Effect',
+        value: null,
+        disabled: true,
+      },
 
-    {
-      nameID: 'colorChrome',
-      label: 'Color Chrome',
-      value: null,
-      disabled: true,
-      checkbox: true,
-    },
-    {
-      nameID: 'colorChromeBlue',
-      label: 'Color Chrome Blue',
-      value: null,
-      disabled: true,
-      checkbox: true,
-    },
-    {
-      nameID: 'noiseReduction',
-      label: 'NR',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'highlight',
-      label: 'Hightlight',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'shadow',
-      label: 'Shadow',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'color',
-      label: 'Color',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'sharpness',
-      label: 'Sharpness',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'clarity',
-      label: 'Clarity',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'whiteBalance',
-      label: 'WB',
-      value: '',
-      disabled: true,
-    },
-    {
-      nameID: 'iso',
-      label: 'ISO',
-      value: '',
-      disabled: true,
-    },
-    {
-      nameID: 'expoComp',
-      label: 'EV',
-      value: 0,
-      disabled: true,
-    },
-    {
-      nameID: 'filter',
-      label: 'Filter',
-      value: '',
-      disabled: true,
-    },
-  ];
+      {
+        nameID: 'colorChrome',
+        label: 'Color Chrome',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'colorChromeBlue',
+        label: 'Color Chrome Blue',
+        value: null,
+        disabled: true,
+      },
+      {
+        nameID: 'noiseReduction',
+        label: 'NR',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'highlight',
+        label: 'Hightlight',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'shadow',
+        label: 'Shadow',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'color',
+        label: 'Color',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'sharpness',
+        label: 'Sharpness',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'clarity',
+        label: 'Clarity',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'whiteBalance',
+        label: 'WB',
+        value: '',
+        disabled: true,
+      },
+      {
+        nameID: 'iso',
+        label: 'ISO',
+        value: '',
+        disabled: true,
+      },
+      {
+        nameID: 'expoComp',
+        label: 'EV',
+        value: 0,
+        disabled: true,
+      },
+      {
+        nameID: 'filter',
+        label: 'Filter',
+        value: '',
+        disabled: true,
+      },
+    ],
+    checkbox: true,
+    button: true,
+  };
 
   const [state, dispatch] = useReducer(recipeReducer, initState);
   const [recipeControl, setrecipeControl] = useState(0);
@@ -130,19 +132,15 @@ export const RecipeProvider = ({ children }) => {
     });
   };
   //Toggle Checkbox
-  const toggleCheckbox = (name, checkbox) => {
+  const toggleState = () => {
     dispatch({
-      type: TOGGLE_CHECKBOX_RECIPE,
-      payload: {
-        currentNameID: name,
-        checkbox: checkbox,
-      },
+      type: TOGGLE_RECIPE_STATE,
     });
   };
-  //RESET
-  const resetRecipe = () => {
+  //Discard
+  const discardRecipe = () => {
     dispatch({
-      type: RESET_RECIPE,
+      type: DISCARD_RECIPE,
       payload: initState,
     });
     //dirty way to reset the UI
@@ -183,8 +181,8 @@ export const RecipeProvider = ({ children }) => {
         state,
         updateRecipe,
         toggleRecipe,
-        toggleCheckbox,
-        resetRecipe,
+        toggleState,
+        discardRecipe,
         exportRecipe,
         setCanvasRef,
       }}
