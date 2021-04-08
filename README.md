@@ -2,10 +2,6 @@
 
 📷 Share your favourite fujifilm simulation
 
-## Built With
-
-- React
-- SCSS
 
 ## Getting Started
 
