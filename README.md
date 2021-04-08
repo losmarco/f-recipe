@@ -1,4 +1,5 @@
 <div align="center">
+  
 ![fujifilm recipe screenshot](src/assets/Screenshot_fujifilm_recipe.png)
 
 # [Fuji Recipe](https://www.fujirecipe.com)
