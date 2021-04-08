@@ -78,7 +78,7 @@ const RecipeControl = () => {
       {/*Reset and Export Button*/}
       <div className={classes.ButtonGroup}>
         <Button onClick={discardRecipe} disabled={buttonDisabled}>
-          Reset
+          Discard
         </Button>
         <Button onClick={exportRecipe} disabled={buttonDisabled}>
           Export

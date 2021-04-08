@@ -82,12 +82,11 @@ const DragAndDrop = () => {
   const dragAndDrop = (
     <>
       <Header />
-
       <div className={classes.DropZone} {...getRootProps({ style })}>
         <input type="file" {...getInputProps()} />
         <img src={uploadIcon} alt="upload" className={classes.uploadIcon} />
-        <h1>Image with Recipe</h1>
-        <h2>(Drag n Drop here)</h2>
+        <h1>Click here to Start</h1>
+        <h2>(or Drag n Drop here)</h2>
       </div>
     </>
   );

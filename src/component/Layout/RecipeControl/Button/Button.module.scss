@@ -4,6 +4,7 @@
   font-size: 2rem;
   font-weight: 300;
   letter-spacing: 0.4rem;
+  width: 40%;
   padding: 0.8em 1.2em;
   text-transform: uppercase;
   border-radius: 2px;
@@ -14,15 +15,6 @@
     cursor: pointer;
   }
 }
-.circleScaleBtn {
-  padding: 12px 24px;
-  background-color: hsl(222, 100%, 95%);
-  color: hsl(243, 80%, 62%);
-  position: relative;
-  border-radius: 6px;
-  overflow: hidden;
-  z-index: 1;
-}
 
 .ButtonDisabled {
   color: #ffffff6b;
@@ -30,6 +22,7 @@
   font-size: 2rem;
   font-weight: 300;
   letter-spacing: 0.4rem;
+  width: 40%;
   padding: 0.8em 1.2em;
   text-transform: uppercase;
   border-radius: 2px;

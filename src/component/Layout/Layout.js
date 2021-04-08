@@ -6,13 +6,13 @@ import Footer from '../Layout/Footer/Footer';
 const Layout = () => {
   return (
     <div className={classes.Layout}>
-      <div className={classes.RecipeControlPanel}>
+      <section className={classes.RecipeControlPanel}>
         <RecipeControl />
-      </div>
-      <div className={classes.RecipeDisplay}>
+      </section>
+      <section className={classes.RecipeDisplay}>
         <DragAndDrop />
         <Footer />
-      </div>
+      </section>
     </div>
   );
 };

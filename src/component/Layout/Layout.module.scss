@@ -4,7 +4,6 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-
   @include respond(tab-port) {
     flex-direction: column-reverse;
     overflow-y: hidden;
@@ -19,6 +18,7 @@
     width: 30%;
     background-color: #1a202c; //try d2d2d2
     @include respond(tab-port) {
+      position: relative;
       width: 100%;
       height: 35%;
       padding: 1em 0;

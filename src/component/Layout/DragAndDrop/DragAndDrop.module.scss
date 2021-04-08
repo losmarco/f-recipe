@@ -10,7 +10,13 @@
   border: 4px dashed #9c9c9c;
   color: #bdbdbd;
   transition: all 250ms ease-in-out;
-}
-.DropZone .uploadIcon {
-  width: 10rem;
+  cursor: pointer;
+
+  .uploadIcon {
+    width: 10rem;
+  }
+
+  h1 {
+    color: #34495e;
+  }
 }
