@@ -7,6 +7,9 @@
 📷 Share your favourite fujifilm simulation
 </div>
 
+Fuji Recipe(F recipe) is a web app for fujifilm users  to customize their unique film simluation and share it on social media.
+
+
 ## Getting Started
 
 ```sh
